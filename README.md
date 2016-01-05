@@ -1,4 +1,3 @@
-init
-    ## system created run in two frameworks PHP
+## system created run in two frameworks PHP
     Laravel
-    Yiistarting project...
+    Yii
