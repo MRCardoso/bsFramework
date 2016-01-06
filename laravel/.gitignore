@@ -1,0 +1,9 @@
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+.idea/
+public/lib
+database/seeds/UserTableSeeder.php
+database/seeds/CorporateRegisterTableSeeder.php

@@ -1,0 +1,24 @@
+{
+  "name": "pizza-laravel-5.1",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.4",
+    "angular-animate": "~1.4.2",
+    "angular-bootstrap": "0.13.0",
+    "angular-resource": "~1.2",
+    "angular-route": "~1.2",
+    "angular-sanitize": "~1.4.7",
+    "angular-toastr": "~1.4.1",
+    "angular-i18n": "~1.4.7",
+    "bootstrap": "~3.3.4",
+    "bootbox": "~4.4.0",
+    "bootstrap-datepicker": "~1.4.0",
+    "angular-utils-pagination": "~0.8.4",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "ngMask": "angular-mask#~3.0.16",
+    "angular-ui-select2": "~0.0.5",
+    "angular-masonry": "~0.14.1"
+  },
+  "appPath": "pizza",
+  "moduleName": "pizza"
+}

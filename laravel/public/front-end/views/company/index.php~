@@ -1,0 +1,32 @@
+<div ng-controller="CompanyController" ng-init="find()">
+    <table class="{{ css_class.table }}">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Status</th>
+            <th width="8%">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr dir-paginate="company in companies | orderBy: '-id' | filter:filter | itemsPerPage: limit" current-page="currentPage">
+                <td>{{company.name}}</td>
+                <td>{{company.cnpj | registry}}</td>
+                <td>{{company.phone | phone }}</td>
+                <td>{{company.email}}</td>
+                <td>
+                    <span class="label label-{{statusText[company.status].class}}">
+                        <span class="glyphicon glyphicon-{{status[company.status].icon}}-circle"></span>
+                        <span data-ng-bind="statusText[company.status].name"></span>
+                    </span>
+                </td>
+                <td>
+                    <table-btn module="{id:company.id,name:moduleName}"></table-btn>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-include="'footer.blade.php' | myUrl"></div>
+</div>
