@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Sistema de gerenciamento</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
         <script language="JavaScript" src="libs/jquery/dist/jquery.min.js"></script>
         <script language="JavaScript" src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
