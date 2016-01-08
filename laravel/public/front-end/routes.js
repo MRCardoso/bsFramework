@@ -5,10 +5,10 @@ angular.module('main')
     {
         var base = (/public\//.test(location.pathname)?"./":"./public/")+"front-end/";
         $routeProvider.when('/',{
-            templateUrl: base+'views/home/init.html'
+            templateUrl: base+'views/home/init.php'
         })
         .when('/info',{
-            templateUrl: base+'views/home/info.html'
+            templateUrl: base+'views/home/info.php'
         })
         .when('/user',{
             templateUrl: base+'views/user/index.php'

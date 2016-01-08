@@ -32,7 +32,7 @@
         </li>
     </ul>
     <a href="https://github.com/MRCardoso/bsFramework/tree/master/laravel" target="_blank" class="btn mrc-btn">
-        Veja o código fonte no Git
+        Veja o código fonte no GitHub
     </a>
 </div>
 <script type="text/javascript">
