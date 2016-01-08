@@ -1,0 +1,1 @@
+<div ng-include="auth.initPath+'.php' | myUrl:'views/home/'"></div>
