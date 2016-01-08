@@ -15,7 +15,7 @@ class Request extends Model
      * The attributes that are mass assignable.
      * @var array
      */
-    protected $fillable = ['corporate_register_id','user_id','deliveryman_id','client_id','product_id','description','request_date','quantity','price','freight','change','discount','situation'];
+    protected $fillable = ['corporate_register_id','user_id','deliveryman_id','client_id','product_id','description','request_date','quantity','price','freight','observation','discount','situation'];
     /*
     | --------------------------------------------------------------------------------------
     | Relations

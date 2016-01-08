@@ -19,10 +19,8 @@ class RequestValidator extends LaravelValidator
         "quantity"              => "integer|required",
         "price"                 => "required|regex:/^\d*(\.\d{0,3})?(\.\d{0,3})?(\,\d{2})?$/",
         "freight"               => "regex:/^\d*(\.\d{0,3})?(\.\d{0,3})?(\,\d{2})?$/",
-        "change"                => "regex:/^\d*(\.\d{0,3})?(\.\d{0,3})?(\,\d{2})?$/",
         "discount"              => "regex:/^\d*(\.\d{0,3})?(\.\d{0,3})?(\,\d{2})?$/",
         "situation"             => "integer|required",
-        "request_date"          => "required",
-        "description"           => "required"
+        "description"           => "max:255"
     ];
 }

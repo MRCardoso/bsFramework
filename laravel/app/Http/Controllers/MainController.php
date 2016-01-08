@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\UserRepositoryEloquent;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 
 abstract class MainController extends Controller
