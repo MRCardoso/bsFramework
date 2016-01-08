@@ -80,7 +80,7 @@ angular.module('request',[])
                         'price':            this.request.price,
                         'request_date':     this.request.request_date,
                         'freight':          this.request.freight,
-                        'change':           this.request.change,
+                        'observation':      this.request.observation,
                         'discount':         this.request.discount,
                         'situation':        this.request.situation
                     });

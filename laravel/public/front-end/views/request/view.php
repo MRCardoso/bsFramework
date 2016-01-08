@@ -112,6 +112,10 @@
                                 <td>{{ request.description}}</td>
                             </tr>
                             <tr>
+                                <th class="text-right">Observação</th>
+                                <td>{{ request.observation}}</td>
+                            </tr>
+                            <tr>
                                 <th class="text-right">Data do pedido</th>
                                 <td>{{ request.request_date}}</td>
                             </tr>

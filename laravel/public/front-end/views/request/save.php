@@ -70,6 +70,14 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">
+                            Data Pedido:
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" ng-model="request.request_date" class="form-control date" mask="39/19/9999">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
                             Descrição:
                         </label>
                         <div class="col-md-6">
@@ -78,10 +86,10 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">
-                            Data Pedido:
+                            Observação:
                         </label>
                         <div class="col-md-6">
-                            <input type="text" ng-model="request.request_date" class="form-control date" mask="39/19/9999">
+                            <textarea ng-model="request.observation" class="form-control" cols="30" rows="3"></textarea>
                         </div>
                     </div>
                 </tab>
@@ -118,19 +126,6 @@
                                     <span class="glyphicon glyphicon-usd"></span>
                                 </div>
                                 <input type="text" ng-model="request.freight" ng-keyup="calculateValue()" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">
-                            Troco:
-                        </label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-usd"></span>
-                                </div>
-                                <input type="text" ng-model="request.change" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
                             </div>
                         </div>
                     </div>
