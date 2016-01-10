@@ -132,6 +132,16 @@
                         "class" => "default"
                     ]
                 ],
+                "salaryType" => [
+                    "fixed_salary" => [
+                        "name" => "Salario fixo",
+                        "class" => ""
+                    ],
+                    "by_delivery" => [
+                        "name" => "Por entrega",
+                        "class" => ""
+                    ]
+                ],
                 "group" => [
                     "admin" => [
                         "name" => "Administrador",

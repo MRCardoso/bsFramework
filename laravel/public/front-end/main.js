@@ -57,6 +57,7 @@ angular
                 $rootScope.sizeText     = text_integer.size;
                 $rootScope.situationText= text_integer.situation;
                 $rootScope.groups       = text_integer.group;
+                $rootScope.salaryType   = text_integer.salaryType;
                 $rootScope.save         = business.save;
                 $rootScope.module       = business.actions;
                 $rootScope.TITLE_SAVE   = business.title;
