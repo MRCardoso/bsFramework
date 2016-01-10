@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="col-md-5 btn-primary" style="margin-bottom: 2%">
+        <h3 class="text-center">Origem</h3>
+        <div>
+            <p style="text-indent: 40px">
+                Este sistema teve origem na apresentação do trabalho final da faculdade,
+                que tinha como objetivo a criação de um sistema web, para uma empresa ficticia chamada “Meveana” (uma pizzaria),
+                que visava automatizar seu processo de entrega de pizza.
+            </p>
+            <a href role="button" style="color: #222" data-toggle="modal" data-target="#scenario">
+                veja o cenário proposto
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6 pull-right btn-warning">
+        <div>
+            <h3 class="text-center">autenticação e controle de acesso</h3>
+            <p class="indent">
+                Pensando no cenário que uma empresa terá varios funcionários e os mesmo poderam ou não ter seus próprios logins,
+                cada usuário ira pertencer a uma corporação, e esta ira definir o que o usuário logado podera ver.
+            </p>
+            <div>
+                desse modo estruturei o acesso ao sistema da seguinte maneira:
+                <ul>
+                    <li>
+                        se o grupo do usuário for "Empresa", este ira gerenciar sua corporação e seus funcionários(adicionar|remover),
+                        ele ira criar sua corporação no momento do cadastro.
+                    </li>
+                    <li>
+                        se o grupo do usuário for "Funcionário", ele estará ligado a uma corporação (usuário grupo empresa),
+                        desse modo ao logar no sistem ele poderá ver (pedidos, clientes, produtos, etc...) de seus colegas e da empresa,
+                        mas poderá editar apenas os que ele mesmo criou.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 mrc-btn-light">
+        <h3 class="text-center">Desenvolvimento</h3>
+        <p class="indent">
+            A principio o sistema foi desenvolvido em PHP com laravel e angularjs, mas preferi ir além,
+            pensando em explorar o conhecimento adquirido e praticar os frameworks com que tive contato (Laravel e Yii)
+            alterando a estrutura do sistema, para que a aplicação possa rodar nos dois framework,
+            a mesma regra de negócio e banco de dados, rodando em frameworks diferentes.
+        </p>
+        <p class="indent">
+            A tecnologia não faz um bom profissional, mas um bom profissional saber trabalhar diferentes tecnologia.
+        </p>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="scenario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">SISTEMA DE CONTROLE DE ENTREGA DE PIZZA</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p class="indent">
+                        A empresa “Meveana”, realizou contato com a Software House SoftPlus e informou
+                        que necessita automatizar seu processo de entrega de pizza. A SoftPlus, enviou um
+                        analista de sistemas para realizar o levantamento dos requisitos.
+                    </p>
+                    <p class="indent">
+                        Durante a reunião, o proprietário da “Meveana”, o Sr. Dorival, informou que a
+                        pizzaria está em expansão, mas no momento a maior necessidade é automatizar as
+                        entregas e posteriormente os demais setores.
+                    </p>
+                    <p class="indent">
+                        Com base no levantamento realizado pelo analista de sistemas, foi possível
+                        identificar que a pizzaria necessitará dos seguintes controles:
+                    </p>
+                    <ol>
+                        <li>
+                            <strong>Controle de Cliente:</strong>
+                            Neste controle é necessário o nome do cliente,
+                            telefone de contato, endereço, ponto de referência e data de nascimento.
+                            <br><br>
+                            <p>
+                                Com base nestes dados, no momento do pedido, o atendente realizará uma
+                                pesquisa pelo número do telefone do cliente, caso esteja cadastrado, os seus
+                                dados deverão ser exibidos, caso contrário, deverá cadastrá-lo.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Controle de Entregadores:</strong>
+                            Neste controle, o serviço é terceirizado, onde os
+                            motoboys são vinculados a uma empresa e recebem apenas pelas entregas
+                            realizadas. Os dados necessários são: nome do entregador, CPF, RG,
+                            celular e Empresa vinculada (nome da empresa que o motoboy trabalha), ou
+                            seja, também será necessário que a empresa esteja cadastrada no sistema.
+                        </li>
+                        <li>
+                            <strong>Controle das Empresas terceirizadas:</strong>
+                            Empresas onde os motoboys são
+                            vinculados, sendo necessários os seguintes dados: Nome da empresa,
+                            CNPJ, endereço, telefone e e-mail.
+                        </li>
+                        <li>
+                            <strong>Controle do Produto:</strong>
+                            Neste caso os produtos são as pizzas a serem
+                            vendidas, sendo necessário a inclusão dos dados, nome do produto,
+                            descrição, tamanho e custo.
+                        </li>
+                        <li>
+                            <strong>Controle de Pedido:</strong>
+                            Para gerenciar os pedidos realizados pelo cliente, o
+                            atendente deverá informar no registro do pedido: nome do cliente, nome do
+                            produto, quantidade, tamanho e etc.
+                        </li>
+                    </ol>
+                    <div>
+                        Os pedidos ficarão nos seguintes status:
+                        <ul>
+                            <li>
+                                <strong>Pendente:</strong>  Quando o atendente da entrada no pedido.
+                            </li>
+                            <li>
+                                <strong>Em trânsito:</strong> Quando o motoboy retira o pedido para a entrega.
+                            </li>
+                            <li>
+                                <strong>Cancelado:</strong>  Quando surge alguma irregularidade e o pedido não pode ser
+                                entregue.
+                            </li>
+                            <li>
+                                <strong>Entregue:</strong>  Quando o motoboy conclui a entrega e apresenta o pagamento.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,17 @@
+.mrc-btn{
+    color: #fff;
+    background-color: #597C5E;
+    border-color: #375A3C;
+}
+.mrc-btn-light{
+    color: #fff;
+    background-color: #6C9E6A;
+    border-color: #597C5E;
+}
+.mrc-btn-light:focus,
+.mrc-btn-light:hover,
+.mrc-btn-light:active{
+    color: #EEEEEE;
+    /*background-color: #698C5E;*/
+    background-color: #7CAE7A;
+}
