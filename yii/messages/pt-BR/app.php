@@ -10,6 +10,7 @@
         "back"                  => "voltar",
         "birthday"              => "aniversário",
          // ---------------------C-------------------------------------------------------------
+        "cellphone"             => "celular",
         "change"                => "troco",
         "changed"               => "alterado",
         "changes"               => "alterações",
@@ -18,6 +19,9 @@
         "client"                => "cliente",
         "client_id"             => "código do cliente",
         "code"                  => "código",
+        "comission"             => "comissão",
+        "comission_type"        => "Tipo de comissão",
+        "comission_value"       => "valor da comissão",
         "company"               => "empresa",
         "company_id"            => "código da empresa",
         "corporate_register"    => "Corporação",

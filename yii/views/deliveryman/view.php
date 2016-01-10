@@ -13,6 +13,14 @@
                 'rg',
                 'cellphone',
                 [
+                    'label' => t('comission'),
+                    'value' => join('',[
+                        number_format($model->salary_value,2,',','.'),
+                        ' - ',
+                        \app\widgets\MyLabels::widget(['model' => $model, "type" => "salaryType"])
+                        ])
+                ],
+                [
                     'label' => t('status'),
                     'format' => 'raw',
                     'value' => \app\widgets\MyLabels::widget(["model" => $model,"type"=>"status"])
