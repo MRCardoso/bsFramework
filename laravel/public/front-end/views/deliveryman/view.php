@@ -26,6 +26,12 @@
                 <td>{{ deliveryman.cellphone }}</td>
             </tr>
             <tr>
+                <th class="text-right">Comissão</th>
+                <td>
+                    {{ salaryType[deliveryman.salary_type].name }} x {{ deliveryman.salary_value }}
+                </td>
+            </tr>
+            <tr>
                 <th class="text-right">
                     Status
                 </th>
