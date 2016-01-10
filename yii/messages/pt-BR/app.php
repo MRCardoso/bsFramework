@@ -3,6 +3,7 @@
     $rs = [
         // ---------------------A-------------------------------------------------------------
         "about_request"         => "sobre o pedido",
+        "Actions"               => "ações",
         "active"                => "ativo",
         "address"               => "endereço",
         "Already_exists_a_request_of_change_password_for_this_email_{email}." => "Já existe uma solicitação de alteração de senha para este e-mail {email}.",

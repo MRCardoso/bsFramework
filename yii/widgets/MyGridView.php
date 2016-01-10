@@ -47,13 +47,15 @@ class MyGridView extends GridView
         return array_merge([
             'class' => ActionColumn::class,
             'header'=> t('Actions'),
+            'contentOptions' => ['width' => '9%'],
             'buttons'=> [
                 'update' => function($url, $model)
                 {
                     if( permission($model, "interface") )
                     {
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                        return Html::a('<span class="glyphicon glyphicon-edit"></span>', $url, [
                             'title' => t('update'),
+                            'class' => 'remove-link label label-primary'
                         ]);
                     }
                 },
@@ -61,8 +63,9 @@ class MyGridView extends GridView
                 {
                     if( permission($model, "interface") )
                     {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                        return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, [
                             'title' => t('delete'),
+                            'class' => 'remove-link label label-danger',
                             'data-confirm' => t('you_sure_you_want_to_delete_this_record'),
                             'data-method' => 'post'
                         ]);
@@ -74,6 +77,7 @@ class MyGridView extends GridView
                     {
                         return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
                             'title' => t('view'),
+                            'class' => 'remove-link label label-warning'
                         ]);
                     }
                 }
