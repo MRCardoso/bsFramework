@@ -17,7 +17,7 @@ class DeliverymanValidator
         return [
             [['company_id', 'name', 'cpf', 'status'], 'required', 'on' => 'save'],
             [['corporate_register_id', 'company_id', 'status'], 'integer', 'on' => 'save'],
-            [['company_id', 'status', 'name', 'companyName','cpf'], 'safe'],
+            [['company_id', 'status', 'name', 'companyName','cpf','salary_type', 'salary_value'], 'safe'],
             [['name'], 'string', 'max' => 255],
             [['cpf'], 'string', 'on' => 'save'],
             [['cellphone','cpf'],'validateNoMask', 'on' => 'save'],
@@ -38,6 +38,8 @@ class DeliverymanValidator
             'rg' => t('Rg'),
             'cellphone' => t('Cellphone'),
             'status' => t('Status'),
+            'salary_type' => t('comission_type'),
+            'salary_value' => t('comission_value'),
             'created_at' => t('Created At'),
             'updated_at' => t('Updated At'),
         ];

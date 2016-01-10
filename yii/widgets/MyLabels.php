@@ -53,4 +53,14 @@ class MyLabels extends Widget
         $arraySize = (Object) $this->arrayList[$size];
         return Html::tag('div', $arraySize->name ,['class'=> "label label-{$arraySize->class}"]);
     }
+    private function salaryTypeLabel()
+    {
+        $salary_type = $this->model->salary_type==NULL?"":$this->model->salary_type;
+        if( $salary_type != "")
+        {
+            $arraySize = (Object) $this->arrayList[$salary_type];
+            return $arraySize->name;
+        }
+        return t("uninformed");
+    }
 }
