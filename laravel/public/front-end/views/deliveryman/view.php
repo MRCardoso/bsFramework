@@ -28,7 +28,7 @@
             <tr>
                 <th class="text-right">Comissão</th>
                 <td>
-                    {{ salaryType[deliveryman.salary_type].name }} x {{ deliveryman.salary_value }}
+                    {{ deliveryman.salary_value }} - {{ salaryType[deliveryman.salary_type].name }}
                 </td>
             </tr>
             <tr>
