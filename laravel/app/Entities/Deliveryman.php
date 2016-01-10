@@ -15,7 +15,7 @@ class Deliveryman extends Model
      * The attributes that are mass assignable.
      * @var array
      */
-    protected $fillable = ['corporate_register_id', 'user_id', 'company_id', 'name','cpf','rg','cellphone', 'status'];
+    protected $fillable = ['corporate_register_id', 'user_id', 'company_id', 'name','cpf','rg','cellphone', 'status', 'salary_type', 'salary_value'];
     /*
     | --------------------------------------------------------------------------------------
     | Relations

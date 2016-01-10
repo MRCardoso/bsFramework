@@ -10,6 +10,10 @@ angular.module('deliveryman',[])
              */
             main.init({moduleName: 'deliveryman'});
 
+            $scope.comissionTypes = [
+                { key: "fixed_salary", name: 'Salário fixo'},
+                { key: "by_delivery", name: 'Por entrega'}
+            ];
             /*
              | -----------------------------------------------------------------
              | list all deliveryman
@@ -34,6 +38,7 @@ angular.module('deliveryman',[])
                     {
                         $scope.deliveryman = deliveryman;
                         $scope.deliveryman.cellphone = $filter('phone')($scope.deliveryman.cellphone);
+                        $scope.deliveryman.salary_value = $filter('currency')($scope.deliveryman.salary_value, '');
                         $scope.module["id"] = deliveryman.id;
                     });
                 }
@@ -54,7 +59,9 @@ angular.module('deliveryman',[])
                         'cpf':          this.deliveryman.cpf,
                         'rg':           this.deliveryman.rg,
                         'cellphone':    this.deliveryman.cellphone,
-                        'status':       this.deliveryman.status
+                        'status':       this.deliveryman.status,
+                        'salary_type':  this.deliveryman.salary_type,
+                        'salary_value': this.deliveryman.salary_value
                     });
                 }
                 else
