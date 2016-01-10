@@ -36,28 +36,20 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a class="collapsed" ng-click="$event.preventDefault()" data-toggle="collapse" data-parent="#accordion" href="#productCollapse">
-                            Produto
+                            Produtos
                         </a>
                     </h4>
                 </div>
                 <div id="productCollapse" class="panel-collapse collapse" role="tabpanel">
                     <div class="panel-body">
-                        <table class="{{css_class.table}}">
-                            <tr>
-                                <th class="text-right">Nome</th>
-                                <td>{{ request.product.name }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-right">Descrição</th>
-                                <td>{{ request.product.description}}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-right">Tamanho</th>
-                                <td>
-                                    <generic-field module="{type:'size', resource:request.product, text:sizeText}"></generic-field>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="list-group">
+                            <div class="list-group-item" ng-repeat="product in request.products">
+                                {{ product.pivot.quantity }} - {{ product.name }}, custo R$ {{ product.pivot.price }}
+                                <div class="pull-right">
+                                    <generic-field module="{type:'size', resource: product, text:sizeText}"></generic-field>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -118,14 +110,6 @@
                             <tr>
                                 <th class="text-right">Data do pedido</th>
                                 <td>{{ request.request_date}}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-right">Quantidade</th>
-                                <td>{{ request.quantity }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-right">Preço</th>
-                                <td>{{ request.price || '0,00' }}</td>
                             </tr>
                             <tr>
                                 <th class="text-right">Valor Total</th>

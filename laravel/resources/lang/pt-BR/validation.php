@@ -134,7 +134,7 @@ return [
         // request
         'deliveryman_id'    => 'Entregador',
         "client_id"         => "Cliente",
-        "product_id"        => "Produto",
+        "products"          => "Produto",
         "quantity"          => "Quantidade",
         "price"             => "Preço",
         "freight"           => "frete",

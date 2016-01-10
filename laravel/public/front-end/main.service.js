@@ -194,7 +194,10 @@ angular.module('main')
                                         else
                                         {
                                             toastr.success(response.message, standard_msg.SUCCESS);
-                                            $route.reload();
+                                            if(/[0-9]/.test($location.$$path))
+                                                $location.path($rootScope.moduleName);
+                                            else
+                                                $route.reload();
                                         }
                                     };
                                 }

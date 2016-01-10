@@ -27,7 +27,7 @@ class RequestController extends MainController
 
     public function productInfo(Request $request)
     {
-        $product = $this->_productRepository->findRule($request["id"], [], ['cost']);
+        $product = $this->_productRepository->findRule($request["id"], [], ['cost', 'name', 'size']);
         if( count($product) > 0)
             return response()->json($product[0]);
         else

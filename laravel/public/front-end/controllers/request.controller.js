@@ -19,6 +19,11 @@ angular.module('request',[])
             main.init({moduleName:'request'});
 
             $scope.totalValue = 0;
+            $scope.messageProduct='';
+            $scope.productData = {};
+            $scope.product_requests = [];
+            $scope.productIds = [];
+            $scope.request = { status:1, freight: 0, discount: 0, products: [] };
 
             /*
              | -----------------------------------------------------------------
@@ -36,7 +41,7 @@ angular.module('request',[])
              */
             $scope.findOne = function ()
             {
-                $scope.products     = $resource('api/product/active').query();
+                $scope.productList     = $resource('api/product/active').query();
                 $scope.clients      = $resource('api/client/active').query();
                 $scope.deliverymen  = $resource('api/deliveryman/active').query();
                 $scope.situations = {
@@ -45,16 +50,16 @@ angular.module('request',[])
                     3: "Cancelado",
                     4: "Entregue"
                 };
-                $scope.request = { status:1, price: 0, freight: 0, discount: 0};
                 if( 'request' in $routeParams )
                 {
                     main.findOne(Request, $routeParams, function (request)
                     {
                         $scope.module["id"] = request.id;
                         $scope.request =  request;
+                        angular.forEach(request.products, function(product,k){
+                            $scope.request.products[k]["pivot"]["price"] = $filter('currency')(product.pivot.price,'');
+                        });
                         $scope.request.request_date = $filter('date')($scope.request.request_date,'dd/MM/yyyy');
-                        $scope.request.price = $filter('currency')($scope.request.price,'');
-                        $scope.request.change = $filter('currency')($scope.request.change,'');
                         $scope.request.freight = $filter('currency')($scope.request.freight,'');
                         $scope.request.discount = $filter('currency')($scope.request.discount,'');
                         $scope.calculateValue();
@@ -74,15 +79,13 @@ angular.module('request',[])
                     request = new Request({
                         'deliveryman_id':   this.request.deliveryman_id,
                         'client_id':        this.request.client_id,
-                        'product_id':       this.request.product_id,
                         'description':      this.request.description,
-                        'quantity':         this.request.quantity,
-                        'price':            this.request.price,
                         'request_date':     this.request.request_date,
                         'freight':          this.request.freight,
                         'observation':      this.request.observation,
                         'discount':         this.request.discount,
-                        'situation':        this.request.situation
+                        'situation':        this.request.situation,
+                        'products':         this.request.products
                     });
                 }
                 else
@@ -106,11 +109,12 @@ angular.module('request',[])
              | -----------------------------------------------------------------
              */
             $scope.productInfo = function () {
-                $resource('api/request/productInfo',{id:this.request.product_id})
+                $resource('api/request/productInfo',{id:this.product_request.product_id})
                     .get()
                     .$promise
                     .then(function(info){
-                        $scope.request.price = $filter('currency')(info.cost,'');
+                        $scope.product_request.price = $filter('currency')(info.cost, '');
+                        $scope.productData = info;
                         $scope.totalValue = info.cost;
                     });
             };
@@ -130,15 +134,74 @@ angular.module('request',[])
              */
             $scope.getValues = function (request)
             {
-                if( request.price != "" && request.quantity != undefined)
+                if( request.products != undefined )
                 {
-                    var quantity    = parseInt(request.quantity);
-                    var price       = $filter('validateNumber')(request.price);
+                    var total =0;
+                    angular.forEach(request.products, function(product,k)
+                    {
+                        total += parseInt(product.pivot.quantity) * $filter('validateNumber')(product.pivot.price);
+                    });
+                    if( $scope.product_request != undefined)
+                    {
+                        total += parseInt($scope.product_request.quantity) * $filter('validateNumber')($scope.product_request.price);
+                    }
                     var freight     = $filter('validateNumber')(request.freight);
                     var discount    = $filter('validateNumber')(request.discount);
 
-                    return ( (quantity * price) + freight) - discount;
+                    return (total + freight) - discount;
                 }
             };
+            /*
+             | -----------------------------------------------------------------
+             | add a product in the list of the request
+             | -----------------------------------------------------------------
+             */
+            $scope.addProduct = function()
+            {
+                $scope.messageProduct='';
+                if( this.product_request != undefined )
+                {
+                    if(  this.product_request.product_id == undefined )
+                    {
+                        $scope.messageProduct = "você preciso selecionar um produto!";
+                    }
+                    else if( !(/^[0-9]$/.test(this.product_request.quantity)) )
+                    {
+                        $scope.messageProduct = "A  quantidade de conter um número inteiro!";
+                    }
+                    else if( !(/^\d*(\.\d{0,3})?(\.\d{0,3})?(\,\d{2})?$/.test(this.product_request.price)) )
+                    {
+                        $scope.messageProduct = "O preço deve conter um valor numérico!";
+                    }
+                    else
+                    {
+                        $scope.request.products.push({
+                            name: $scope.productData.name,
+                            size: $scope.productData.size,
+                            pivot: {
+                                product_id: this.product_request.product_id,
+                                quantity: this.product_request.quantity,
+                                price: this.product_request.price
+                            }
+                        });
+                        $scope.product_request = {};
+                        angular.element("#addProduct").modal('hide');
+                    }
+                }
+                else{
+                    $scope.messageProduct = "você preciso informar os dados do pedido!";
+                }
+            };
+            /*
+             | -----------------------------------------------------------------
+             | remove a product in the list of the request
+             | -----------------------------------------------------------------
+             */
+            $scope.dropProduct = function($index)
+            {
+                this.request.products.splice($index,1);
+                this.productIds.splice($index,1);
+                $scope.calculateValue();
+            }
         }
     ]);

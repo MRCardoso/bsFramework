@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Repositories\ProductRepository;
 use App\Validators\ProductValidator;
+use Illuminate\Support\Facades\Lang;
 
 class ProductService extends Service
 {
@@ -14,5 +15,17 @@ class ProductService extends Service
     {
         $this->_repository = $repository;
         $this->_validator = $validator;
+    }
+    public function destroy($id)
+    {
+        $validate = count($this->_repository->find($id)->requests);
+        if( $validate > 0)
+        {
+            return response()->json(Lang::get("app.product_not_allow_drop",["request" => $validate]),403);
+        }
+        else
+        {
+            return parent::destroy($id);
+        }
     }
 }

@@ -36,10 +36,10 @@ class Product extends Model
         return $this->belongsTo('App\Entities\User');
     }
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function request()
+    public function requests()
     {
-        return $this->hasMany('App\Entities\Request');
+        return $this->belongsToMany('App\Entities\Request', 'product_request');
     }
 }

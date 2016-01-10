@@ -15,7 +15,7 @@ class Request extends Model
      * The attributes that are mass assignable.
      * @var array
      */
-    protected $fillable = ['corporate_register_id','user_id','deliveryman_id','client_id','product_id','description','request_date','quantity','price','freight','observation','discount','situation'];
+    protected $fillable = ['corporate_register_id','user_id','deliveryman_id','client_id','description','request_date','freight','observation','discount','situation'];
     /*
     | --------------------------------------------------------------------------------------
     | Relations
@@ -42,12 +42,14 @@ class Request extends Model
     {
         return $this->belongsTo('App\Entities\Deliveryman');
     }
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function product()
+    public function products()
     {
-        return $this->belongsTo('App\Entities\Product');
+        return $this->belongsToMany('App\Entities\Product','product_request')
+            ->withPivot("price", "quantity");
     }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -97,6 +97,7 @@
         "the_requested_page_does_not_exist." => "a página requisitada não existe.",
         "the_user_don't_has_permission_to_access_this_interface" => "O Usuário Não Tem Permissão Para Acessar Esta Interface",
         "this_User_was_deactivated." => "este usuário foi desativado.",
+        "product_not_allow_drop" => "este produto está ligado a :request pedido(s), e não pode ser removido",
         "total_value"           => "valor total",
         // ---------------------U-------------------------------------------------------------
         "uninformed"            => "não informado",
