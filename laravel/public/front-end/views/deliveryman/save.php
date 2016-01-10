@@ -82,6 +82,30 @@
                 </div>
             </div>
         </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    Tipo de Comissao:
+                </label>
+                <div class="col-md-6">
+                    <select class="form-control" ng-model="deliveryman.salary_type">
+                        <option value="">Selecione</option>
+                        <option ng-repeat="types in comissionTypes" value="{{types.key}}">{{ types.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    Valor da Comissao:
+                </label>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" ng-model="deliveryman.salary_value" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-usd"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <my-actions module="module"></my-actions>
     </form>
 </div>
