@@ -76,13 +76,10 @@ class Company extends MyModel
     }
     public function beforeSave($insert)
     {
-        if (parent::beforeSave($insert))
-        {
-            $this->start_date = formatDatabase($this->start_date);
-            $this->end_date = formatDatabase($this->end_date);
-            return true;
-        }
-        return false;
+        $this->start_date = formatDatabase($this->start_date);
+        $this->end_date = formatDatabase($this->end_date);
+        
+        return parent::beforeSave($insert);
     }
     /*
      | -------------------------------------------------------------------------------------------
