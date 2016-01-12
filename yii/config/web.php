@@ -15,9 +15,6 @@ $config = [
             'thousandSeparator' => '.',
             'decimalSeparator' => ',',
             'currencyCode' => 'R$',
-            'defaultTimeZone' => 'UTC',
-            'dateFormat' => 'php:d-m-Y',
-            'datetimeFormat'=>'php:d-M-Y H:i:s'
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
