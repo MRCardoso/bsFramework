@@ -79,7 +79,7 @@ class Company extends MyModel
         if (parent::beforeSave($insert))
         {
             $this->start_date = formatDatabase($this->start_date);
-            $this->end_date = formatDatabase($this->end_date,1);
+            $this->end_date = formatDatabase($this->end_date);
             return true;
         }
         return false;
