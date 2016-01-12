@@ -75,6 +75,15 @@ class Request extends MyModel
 
         parent::afterFind();
     }
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert))
+        {
+            $this->request_date = formatDatabase($this->request_date);
+            return true;
+        }
+        return false;
+    }
     /*
      | -------------------------------------------------------------------------------------------
      | Relations

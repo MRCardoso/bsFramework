@@ -40,11 +40,10 @@
     }
     if( !function_exists('formatDatabase'))
     {
-        function formatDatabase($date)
+        function formatDatabase($date,$moreDay=0)
         {
             $datebase = explode('/',$date);
-            krsort($datebase);
-            return join('-',$datebase);
+            return $datebase[2].'-'.$datebase[1].'-'.($datebase[0]+$moreDay);
         }
     }
     if ( ! function_exists('t') )
