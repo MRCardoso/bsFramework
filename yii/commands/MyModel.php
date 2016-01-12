@@ -189,7 +189,12 @@ class MyModel extends ActiveRecord
         foreach($this->_filters["like"] as $field => $filter)
         {
             $column = ( gettype($field) == "string" ? $field : $filter);
-            $this->_model->andFilterWhere(['like', $column, $this->{$filter}]);
+            $validField = $this->{$filter};
+
+            if( preg_match('/date/', $column))
+                $validField = formatDatabase($validField);
+
+            $this->_model->andFilterWhere(['like', $column, $validField]);
         }
 
         return $dataProvider;
