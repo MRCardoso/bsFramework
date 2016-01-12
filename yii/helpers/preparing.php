@@ -43,7 +43,7 @@
         function formatDatabase($date)
         {
             $datebase = explode('/',$date);
-            return $datebase[2].'-'.$datebase[1].'-'.($datebase[0]+1);
+            return $datebase[2].'-'.$datebase[1].'-'.$datebase[0];
         }
     }
     if ( ! function_exists('t') )
