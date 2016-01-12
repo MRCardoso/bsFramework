@@ -220,16 +220,17 @@ class MyModel extends ActiveRecord
     /**
      * list an array with [id => name] of the model specified, filter by corporate of the user authenticated
      * @param $model
+     * @param $where
      * @return array
      */
-    public function arrayListModel($model)
+    public function arrayListModel($model, $where = [])
     {
-        return ArrayHelper::map(
-            $model::find()
-                ->where(['status'=> self::ACTIVE])
-                ->andWhere($this->corporateFilter())
-                ->all()
-            ,'id','name');
+        $query = $model::find()
+            ->where(['status'=> self::ACTIVE])
+            ->andWhere($this->corporateFilter());
+        if( !empty($where) )
+            $query->andWhere($where);
+        return ArrayHelper::map($query->all(),'id','name');
     }
 
     /**

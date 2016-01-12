@@ -5,6 +5,7 @@
         "about_request"         => "sobre o pedido",
         "Actions"               => "ações",
         "active"                => "ativo",
+        "info_additionals"      => "informações adicionais",
         "address"               => "endereço",
         "Already_exists_a_request_of_change_password_for_this_email_{email}." => "Já existe uma solicitação de alteração de senha para este e-mail {email}.",
         // ---------------------B-------------------------------------------------------------
@@ -36,6 +37,7 @@
         "deliveryman_id"        => "código do entregador",
         "description"           => "descrição",
         "discount"              => "desconto",
+        "do_you_need_inform_a_product!" => "você precisa informar um produto!",
         // ---------------------E-------------------------------------------------------------
         "email"                 => "e-mail",
         "employee"              => "Funcionário",
@@ -69,12 +71,16 @@
         // ---------------------O-------------------------------------------------------------
         "observation"           => "observação",
         // ---------------------P-------------------------------------------------------------
+        "pass_1"                => "passo 1",
+        "pass_2"                => "passo 2",
         "password"              => "senha",
         "password_confirmation" => "confirmação de senha",
         "phone"                 => "telefone",
         "price"                 => "preço",
         "product"               => "produto",
+        "products"              => "produtos",
         "product_id"            => "código do produto",
+        "this_product_is_bound_to_{request},_and_can_not_be_removed!" => "este produto está ligado a {request} pedido(s), e não pode ser removido!",
         // ---------------------Q-------------------------------------------------------------
         "quantity"              => "quantidade",
         // ---------------------R-------------------------------------------------------------

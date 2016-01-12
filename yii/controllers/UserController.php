@@ -18,16 +18,7 @@ class UserController extends MyController
     {
         return $this->save($this->_model, true);
     }
-    public function actionCreate()
-    {
-        $this->_model->status = User::ACTIVE;
-        return $this->save($this->_model);
-    }
-    public function actionUpdate($id)
-    {
-        return $this->save($this->findModel($id));
-    }
-    private function save(User $model, $isSignup = false)
+    protected function save(User $model, $isSignup = false)
     {
         $model->setScenario($model->id?'save':'create');
         $action = t($model->isNewRecord?'create':'updated_at');

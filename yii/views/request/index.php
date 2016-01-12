@@ -19,13 +19,6 @@
                     return $data->client->name;
                 }
             ],
-            [
-                'attribute' => 'product_id',
-                'filter' => $searchModel->arrayListModel(\app\models\Product::class),
-                'value' => function($data){
-                    return $data->product->name;
-                }
-            ],
             'description',
             'totalValue',
             [

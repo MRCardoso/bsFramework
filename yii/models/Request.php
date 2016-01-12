@@ -14,13 +14,10 @@ use yii\data\ActiveDataProvider;
  * @property integer $corporate_register_id
  * @property integer $deliveryman_id
  * @property integer $client_id
- * @property integer $product_id
  * @property string $description
- * @property integer $quantity
- * @property string $price
  * @property string $request_date
  * @property string $freight
- * @property string $change
+ * @property string $observation
  * @property string $discount
  * @property integer $situation
  * @property string $created_at
@@ -48,8 +45,9 @@ class Request extends MyModel
         $this->_model = self::find();
         $this->_validator = RequestValidator::getRules();
         $this->_label = RequestValidator::getLabels();
+
         $this->_filters = [
-            "equal" => ['deliveryman_id', 'client_id', 'product_id', 'quantity', 'price', 'request_date', 'freight', 'discount', 'situation'],
+            "equal" => ['deliveryman_id', 'client_id', 'request_date', 'freight', 'discount', 'situation'],
             "like" => ['description']
         ];
     }
@@ -68,7 +66,11 @@ class Request extends MyModel
 
     public function afterFind()
     {
-        $this->totalValue =  Yii::$app->formatter->asCurrency( ( ($this->quantity * $this->price) + $this->freight) - $this->discount);
+        $total = 0;
+        foreach($this->productRequests as $productRequest)
+            $total += ($productRequest->quantity * $productRequest->price);
+
+        $this->totalValue =  Yii::$app->formatter->asCurrency( ( $total + $this->freight ) - $this->discount);
         $this->request_date = formatDate($this->request_date,'d/m/Y');
 
         parent::afterFind();
@@ -92,12 +94,13 @@ class Request extends MyModel
     {
         return $this->hasOne(Client::className(), ['id' => 'client_id']);
     }
+
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProduct()
+    public function getProductRequests()
     {
-        return $this->hasOne(Product::className(), ['id' => 'product_id']);
+        return $this->hasMany(ProductRequest::className(), ['request_id' => 'id']);
     }
     /**
      * @return \yii\db\ActiveQuery
@@ -141,5 +144,33 @@ class Request extends MyModel
         ]);
 
         return $dataProvider;
+    }
+
+    public function saveRequest($products)
+    {
+        $transaction = Yii::$app->db->beginTransaction();
+        if( $this->save() )
+        {
+            ProductRequest::deleteAll(['request_id'=> $this->id]);
+            foreach($products as $product )
+            {
+                if( substr_count($product["price"], ',') == 1)
+                {
+                    $product["price"] = str_replace(',', '.', str_replace('.', '',$product["price"]));
+                }
+                $product_request = new ProductRequest();
+                $product_request->request_id = $this->id;
+                $product_request->product_id = $product["product_id"];
+                $product_request->quantity = $product["quantity"];
+                $product_request->price = $product["price"];
+
+                if( !$product_request->save() )
+                    dd($product_request->getErrors());
+            }
+            $transaction->commit();
+            return true;
+        }
+        $transaction->rollBack();
+        return false;
     }
 }

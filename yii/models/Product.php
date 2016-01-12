@@ -68,8 +68,8 @@ class Product extends MyModel
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRequests()
+    public function getProductRequests()
     {
-        return $this->hasMany(Request::className(), ['product_id' => 'id']);
+        return $this->hasMany(ProductRequest::className(), ['product_id' => 'id']);
     }
 }

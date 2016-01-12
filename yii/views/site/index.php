@@ -15,9 +15,8 @@
                 {
                     return
                         \yii\helpers\Html::tag('div',join('',[
-                                "<span class=\"badge pull-right\" title=\"".t('quantity')."\">{$request->quantity}</span>",
                                 "<h4 class=\"list-group-item-heading\">{$request->client->name}</h4>",
-                                "{$request->description} - {$request->price}",
+                                "{$request->description}",
                                 \yii\helpers\Html::tag('div', \app\widgets\MyLabels::widget(['model' => $request, 'type' => 'situation']), ['class' => 'pull-right']),
                                 \yii\helpers\Html::a(' '.t('see more...'), ["/request/{$request->id}"])
                             ])

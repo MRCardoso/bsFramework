@@ -1,7 +1,18 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+$products=["<div class=\"list-group\">"];
+foreach ($model->productRequests as $productRequest) {
+    $products[] = "<div class=\"list-group-item\">
+            {$productRequest->quantity}  - {$productRequest->product->name}, Custo R$ ".number_format($productRequest->price,2,',','.')."
+            <div class=\"pull-right\">
+                ".\app\widgets\MyLabels::widget(["model" => $productRequest->product, "type" => "size"])."
+            </div>
 
+     </div>";
+}
+
+$products[]="</div>";
 echo Html::tag('div',
     join('', [
         \yii\bootstrap\Collapse::widget([
@@ -15,23 +26,6 @@ echo Html::tag('div',
                                 'client.name',
                                 'client.phone',
                                 'client.address',
-                            ],
-                        ]),
-                    ]),
-                ],
-                [
-                    'label' => t('product'),
-                    'content' => join('', [
-                        DetailView::widget([
-                            'model' => $model,
-                            'attributes' => [
-                                'product.name',
-                                'product.description',
-                                [
-                                    'attribute' => t('size'),
-                                    'format' => 'raw',
-                                    'value' => \app\widgets\MyLabels::widget(["model" => $model->product,"type"=>"size"])
-                                ],
                             ],
                         ]),
                     ]),
@@ -51,6 +45,10 @@ echo Html::tag('div',
                     ]),
                 ],
                 [
+                    'label' => t('products'),
+                    'content' => join('', $products),
+                ],
+                [
                     'label' => t('request'),
                     'content' => join('', [
                         DetailView::widget([
@@ -59,8 +57,6 @@ echo Html::tag('div',
                                 'description',
                                 'observation',
                                 'request_date',
-                                'quantity',
-                                'price:decimal',
                                 'freight:decimal',
                                 'discount:decimal',
                                 'totalValue',

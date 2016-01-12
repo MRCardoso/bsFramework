@@ -105,7 +105,7 @@ abstract class MyController extends Controller
      * @param $model
      * @return string|\yii\web\Response
      */
-    private function save($model)
+    protected function save($model)
     {
         $model->setScenario('save');
 
