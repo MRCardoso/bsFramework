@@ -38,6 +38,15 @@
             return "";
         }
     }
+    if( !function_exists('formatDatabase'))
+    {
+        function formatDatabase($date)
+        {
+            $datebase = explode('/',$date);
+            krsort($datebase);
+            return join('-',$datebase);
+        }
+    }
     if ( ! function_exists('t') )
     {
         /*
