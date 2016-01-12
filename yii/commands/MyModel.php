@@ -131,8 +131,9 @@ class MyModel extends ActiveRecord
 
                 if( $this->_withUser && ( $identity = self::corporateId('id') ) != 0 )
                     $this->user_id = $identity;
+
+                $this->created_at = date("d-m-Y H:i:s");
             }
-            $this->created_at = ($this->isNewRecord? date("d-m-Y H:i:s") : self::findOne($this->id)->created_at);
             $this->updated_at = date("d-m-Y H:i:s");
             return true;
         }
