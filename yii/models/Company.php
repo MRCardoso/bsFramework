@@ -78,7 +78,7 @@ class Company extends MyModel
     {
         $this->start_date = formatDatabase($this->start_date);
         $this->end_date = formatDatabase($this->end_date);
-        
+
         return parent::beforeSave($insert);
     }
     /*
