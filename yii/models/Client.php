@@ -68,15 +68,6 @@ class Client extends MyModel
 
         parent::afterFind();
     }
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert))
-        {
-            $this->birthday = formatDatabase($this->birthday);
-            return true;
-        }
-        return false;
-    }
     /*
      | -------------------------------------------------------------------------------------------
      | Relations
