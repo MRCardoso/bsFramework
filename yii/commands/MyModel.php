@@ -173,7 +173,16 @@ class MyModel extends ActiveRecord
         foreach($this->_filters["equal"] as $field => $filter)
         {
             $column = ( gettype($field) == "string" ? $field : $filter);
-            $equals[$column] = $this->{$filter};
+            if(substr_count($filter,'filter:') > 0)
+            {
+                $validate = explode(':', $filter)[1];
+                $validField = $validate($this->{$column});
+            }
+            else
+            {
+                $validField = $this->{$filter};
+            }
+            $equals[$column] = $validField;
         }
         if( ($identity = self::corporateId()) != 0 )
         {
@@ -189,14 +198,8 @@ class MyModel extends ActiveRecord
         foreach($this->_filters["like"] as $field => $filter)
         {
             $column = ( gettype($field) == "string" ? $field : $filter);
-            $validField = $this->{$filter};
-
-            if( preg_match('/date/', $column))
-                $validField = formatDatabase($validField);
-
-            $this->_model->andFilterWhere(['like', $column, $validField]);
+            $this->_model->andFilterWhere(['like', $column, $this->{$filter}]);
         }
-
         return $dataProvider;
     }
     /*

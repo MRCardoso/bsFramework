@@ -47,7 +47,7 @@ class Request extends MyModel
         $this->_label = RequestValidator::getLabels();
 
         $this->_filters = [
-            "equal" => ['deliveryman_id', 'client_id', 'request_date', 'freight', 'discount', 'situation'],
+            "equal" => ['deliveryman_id', 'client_id', 'request_date' => 'filter:formatDatabase', 'freight', 'discount', 'situation'],
             "like" => ['description']
         ];
     }

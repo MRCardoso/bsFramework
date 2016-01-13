@@ -40,7 +40,7 @@ class Client extends MyModel
         $this->_validator = ClientValidator::getRules();
         $this->_label = ClientValidator::getLabels();
         $this->_filters = [
-            'equal' => [ 'birthday', 'status'],
+            'equal' => [ 'birthday' => 'filter:formatDatabase', 'status'],
             'like' => ['name', 'phone', 'address']
         ];
     }
