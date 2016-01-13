@@ -45,7 +45,7 @@
             if( $date != "")
             {
                 $datebase = explode('/',$date);
-                return $datebase[2].'-'.$datebase[1].'-'.$datebase[0];
+                return $datebase[2].'-'.$datebase[1].'-'.($datebase[0]+1);
             }
             return NULL;
         }
