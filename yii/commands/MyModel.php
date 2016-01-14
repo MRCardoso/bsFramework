@@ -132,9 +132,9 @@ class MyModel extends ActiveRecord
                 if( $this->_withUser && ( $identity = self::corporateId('id') ) != 0 )
                     $this->user_id = $identity;
 
-                $this->created_at = date("d-m-Y H:i:s");
+                $this->created_at = date("Y-m-d H:i:s");
             }
-            $this->updated_at = date("d-m-Y H:i:s");
+            $this->updated_at = date("Y-m-d H:i:s");
             return true;
         }
         return false;
