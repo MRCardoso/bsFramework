@@ -100,7 +100,7 @@ class MyModel extends ActiveRecord
      */
     public function afterFind()
     {
-        $this->changes = join(' ', [t('created_at'),$this->created_at,"|",t("updated_at"),$this->updated_at]);
+        $this->changes = join(' ', [t('created_at'),formatDate($this->created_at),"|",t("updated_at"),formatDate($this->updated_at)]);
         parent::afterFind();
     }
 

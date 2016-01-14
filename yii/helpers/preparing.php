@@ -34,7 +34,12 @@
         function formatDate($date, $format = "d/m/Y H:i:s")
         {
             if( $date != NULL )
-                return Yii::$app->formatter->asDatetime($date, "php:{$format}");
+            {
+                if( preg_match("/\d{4}-\d{2}-\d{2}/", $date) )
+                    return Yii::$app->formatter->asDatetime($date, "php:{$format}");
+                else
+                    return $date;
+            }
             return "";
         }
     }
@@ -44,8 +49,15 @@
         {
             if( $date != "")
             {
-                $datebase = explode('/',$date);
-                return $datebase[2].'-'.$datebase[1].'-'.$datebase[0];
+                if( preg_match("/\d{2}\/\d{2}\/\d{4}/", $date) )
+                {
+                    $datebase = explode('/',$date);
+                    return $datebase[2].'-'.$datebase[1].'-'.$datebase[0];
+                }
+                else
+                {
+                    return $date;
+                }
             }
             return NULL;
         }
