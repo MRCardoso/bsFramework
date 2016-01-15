@@ -104,13 +104,14 @@
                     $model = isset($params["model"]) ? $params["model"] : '';
                     $attribute = isset($params["attribute"]) ? $params["attribute"] : "";
                     //$className = (new ReflectionClass($model))->getShortName();
-                    return array_merge([
+                    return array_merge_recursive([
                         'model' => $model,
                         'attribute' => $attribute,
                         'template' => '{input}{addon}',
                         'language' => 'pt',
                         'clientOptions' => [
                             'autoclose' => true,
+                            'todayHighlight' => true,
                             'format' => 'dd/mm/yyyy'
                         ],
                         'options' => [

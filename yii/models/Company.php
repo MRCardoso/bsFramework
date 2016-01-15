@@ -103,4 +103,16 @@ class Company extends MyModel
     {
         return $this->hasMany(Deliveryman::className(), ['company_id' => 'id']);
     }
+    /*
+     | -------------------------------------------------------------------------------------------
+     | my own methods
+     | -------------------------------------------------------------------------------------------
+     */
+    public function validStartEnd($attribute, $params)
+    {
+        if( formatDatabase($this->{$attribute}) > formatDatabase($this->{$params}) )
+            $this->addError($attribute, t("the_start_date_can_not_be_large_that_the_end_date"));
+        if( formatDatabase($this->{$params}) < formatDatabase($this->{$attribute}) )
+            $this->addError($params, t("the_end_date_can_not_be_less_that_the_start_date"));
+    }
 }

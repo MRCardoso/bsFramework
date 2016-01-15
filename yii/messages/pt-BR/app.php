@@ -103,6 +103,8 @@
         "status"                => "Status",
         // ---------------------T-------------------------------------------------------------
         "the_{attribute}_can_not_be_greater_than_{length}" => "o \"{attribute}\" não pode ser maior que {length}",
+        "the_start_date_can_not_be_large_that_the_end_date" => "A \"data inicial\" não pode ser maior que a \"data fim\"",
+        "the_end_date_can_not_be_less_that_the_start_date" =>  "A \"data fim\" não pode ser menor que a \"data inicial\"",
         "the_record_not_was_{action}" => "o registro não foi {action}",
         "the_record_was_{action}_with_successful" => "o registro foi {action} com sucesso",
         "the_requested_page_does_not_exist." => "a página requisitada não existe.",

@@ -8,7 +8,17 @@
                 ->widget(\yii\widgets\MaskedInput::class, ['mask' => '(99) 99999999[9]']);
             echo $form->field($model, 'birthday')
                 ->widget(\yii\widgets\MaskedInput::className(), ['mask' => '99/99/9999'] )
-                ->widget(\dosamigos\datepicker\DatePicker::className(), viewOption(['model'=>$model,'attribute' => 'birthday'],"datepicker") );
+                ->widget(\dosamigos\datepicker\DatePicker::className(), viewOption(
+                    [
+                        'model' => $model,
+                        'attribute' => 'birthday',
+                        'options' => [
+                            'clientOptions' => [
+                                'startView' => 2,
+                                'endDate' => date('d/m/Y'),
+                            ]
+                        ]
+                    ], "datepicker") );
             echo $form->field($model, 'address')->textInput(['maxlength' => true]);
             echo $form->field($model, 'number')
                 ->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9{1,10}'] );

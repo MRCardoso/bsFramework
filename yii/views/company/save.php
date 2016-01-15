@@ -12,14 +12,11 @@
             echo $form->field($model, 'address')->textInput(['maxlength' => true]);
             echo $form->field($model, 'email')->textInput(['maxlength' => true]);
             echo $form->field($model, 'start_date')->widget(
-                \dosamigos\datepicker\DatePicker::class,
-                viewOption(['model' =>$model,"options"=>['template'=>'{input}{addon}']],"datepicker")
+                \dosamigos\datepicker\DatePicker::class, viewOption(['model' =>$model],"datepicker")
             );
             echo $form->field($model, 'end_date')->widget(
-                \dosamigos\datepicker\DatePicker::class,
-                viewOption(['model' =>$model,"options"=>['template'=>'{input}{addon}']],"datepicker")
+                \dosamigos\datepicker\DatePicker::class, viewOption(['model' =>$model],"datepicker")
             );
-
             echo \app\widgets\MyButtons::widget(['model' => $model]);
         ActiveForm::end();
     echo '</div>';
