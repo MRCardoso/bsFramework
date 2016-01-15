@@ -27,6 +27,7 @@ class User extends MyModel implements IdentityInterface
 {
     protected $_withCorporate = false;
     protected $_withUser = false;
+    private $groupAllow = ['admin', 'user', 'company', 'employee'];
     /*
      | -------------------------------------------------------------------------------------------
      | Load data to run the parent model in the standard of the Application
@@ -115,12 +116,21 @@ class User extends MyModel implements IdentityInterface
                 $this->group = "employee";
             }
         }
-
+        elseif( !in_array($this->group, $this->groupAllow))
+        {
+            $this->addError("group", t("the group not found!"));
+            $transaction->rollBack();
+            return false;
+        }
         switch($this->group)
         {
             case "admin":
                 $this->setScenario('corporateSave');
                 $corporateRegister = CorporateRegister::find()->where(["code"=> "admin_management"])->one();
+                break;
+            case "user":
+                $this->setScenario('corporateSave');
+                $corporateRegister = CorporateRegister::find()->where(["code"=> "user_test"])->one();
                 break;
             case "employee":
                 $this->setScenario('corporateSave');
