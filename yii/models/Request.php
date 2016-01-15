@@ -71,7 +71,7 @@ class Request extends MyModel
             $total += ($productRequest->quantity * $productRequest->price);
 
         $this->totalValue =  Yii::$app->formatter->asCurrency( ( $total + $this->freight ) - $this->discount);
-        $this->request_date = formatDate($this->request_date,'d/m/Y');
+        $this->request_date = formatDate($this->request_date,'d/m/Y',"Date");
 
         parent::afterFind();
     }

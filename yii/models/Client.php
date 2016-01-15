@@ -64,7 +64,7 @@ class Client extends MyModel
         if( $this->phone != NULL )
             $this->phone = join('', ['(', substr($this->phone,0,2), ') ', substr($this->phone,2)]);
 
-        $this->birthday = formatDate($this->birthday,'d/m/Y');
+        $this->birthday = formatDate($this->birthday,'d/m/Y',"Date");
 
         parent::afterFind();
     }

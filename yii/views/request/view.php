@@ -69,6 +69,7 @@ echo Html::tag('div',
                             ],
                         ]),
                     ]),
+                    'contentOptions' => ['class' => 'in']
                 ],
             ]
         ]),

@@ -31,12 +31,12 @@
          | --------------------------------------------------------------------------
          | Format date with method of the framework
          */
-        function formatDate($date, $format = "d/m/Y H:i:s")
+        function formatDate($date, $format = "d/m/Y H:i:s", $datetime="Datetime")
         {
             if( $date != NULL )
             {
                 if( preg_match("/\d{4}-\d{2}-\d{2}/", $date) )
-                    return Yii::$app->formatter->asDatetime($date, "php:{$format}");
+                    return Yii::$app->formatter->{"as{$datetime}"}($date, "php:{$format}");
                 else
                     return $date;
             }

@@ -69,8 +69,8 @@ class Company extends MyModel
         if( $this->cnpj != NULL && strlen($this->cnpj) == 14)
             $this->cnpj = join('', [substr($this->cnpj,0,2), '.', substr($this->cnpj,2,3), '.', substr($this->cnpj,5,3), '/', substr($this->cnpj,8,4), '-', substr($this->cnpj,12) ]);
 
-        $this->start_date = formatDate($this->start_date,'d/m/Y');
-        $this->end_date = formatDate($this->end_date,'d/m/Y');
+        $this->start_date = formatDate($this->start_date,'d/m/Y',"Date");
+        $this->end_date = formatDate($this->end_date,'d/m/Y',"Date");
 
         parent::afterFind();
     }
