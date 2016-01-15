@@ -15,7 +15,7 @@ class CorporateRegisterValidator
     {
         return [
             [['name', 'code'], 'required', 'on' => 'save'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['status', 'created_at', 'updated_at'], 'safe'],
             [['name', 'code'], 'string', 'max' => 255],
             [['code'], 'unique']
         ];

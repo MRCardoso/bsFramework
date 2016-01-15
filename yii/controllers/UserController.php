@@ -87,8 +87,10 @@ class UserController extends MyController
         {
             if ( $model->group == "company" )
             {
+                $corporateModel = CorporateRegister::findOne($model->corporate_register_id);
+                $corporateModel->status = User::INACTIVE;
                 $condition = ['group' => 'employee','corporate_register_id' => $model->corporate_register_id];
-                if( !User::updateAll(['status' => User::INACTIVE], $condition) )
+                if( !$corporateModel->save() && !User::updateAll(['status' => User::INACTIVE], $condition) )
                 {
                     $transaction->rollBack();
                     msf('error', t('removed'));

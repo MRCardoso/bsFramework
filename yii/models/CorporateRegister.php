@@ -27,7 +27,6 @@ class CorporateRegister extends MyModel
 {
     protected $_withCorporate = false;
     protected $_withUser = false;
-    public $status = 0;
 
     public function __construct($config = [])
     {
