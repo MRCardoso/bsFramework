@@ -108,6 +108,11 @@ class Company extends MyModel
      | my own methods
      | -------------------------------------------------------------------------------------------
      */
+    /**
+     * validate if start_date is less that end_date
+     * @param $attribute
+     * @param $params
+     */
     public function validStartEnd($attribute, $params)
     {
         if( formatDatabase($this->{$attribute}) > formatDatabase($this->{$params}) )
