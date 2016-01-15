@@ -47,6 +47,11 @@ class User extends MyModel implements IdentityInterface
             'other' => ( checkGroup("employee") ? ['id' => Yii::$app->user->id]: [])
         ];
     }
+
+    public function getAllows()
+    {
+        return $this->groupAllow;
+    }
     /*
      | -------------------------------------------------------------------------------------------
      | Methods of the Framework
@@ -95,32 +100,27 @@ class User extends MyModel implements IdentityInterface
      */
     public function saveUser(Array $data, CorporateRegister $corporate, $isSignup = false )
     {
+        if( !in_array($this->group, $this->groupAllow))
+        {
+            $this->addError("group", t("the group not found!"));
+            return false;
+        }
         $transaction = Yii::$app->db->beginTransaction();
         $corporateRegister = new CorporateRegister();
         if( $isSignup )
         {
-            if ( !in_array($this->group, ['company', 'employee']))
+            if ( !in_array($this->group, ['company', 'employee', 'user']))
                 $this->group = NULL;
         }
         elseif( !checkGroup("admin") )
         {
             if( checkGroup("company") )
-            {
                 if($this->id == Yii::$app->user->id )
                     $this->group = "company";
                 else
                     $this->group = "employee";
-            }
             else
-            {
-                $this->group = "employee";
-            }
-        }
-        elseif( !in_array($this->group, $this->groupAllow))
-        {
-            $this->addError("group", t("the group not found!"));
-            $transaction->rollBack();
-            return false;
+                $this->group = self::corporateId("group");
         }
         switch($this->group)
         {

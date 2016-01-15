@@ -34,16 +34,26 @@ class UserController extends MyController
         else
         {
             $identity = \Yii::$app->user->identity;
-            if( $identity->group != "admin")
+            if( !checkGroup("admin") )
             {
                 unset($groups["admin"]);
-                if( $identity->group == "company")
+
+                if( checkGroup("company") )
+                {
+                    unset($groups["user"]);
                     if( $model->id != NULL && $model->id == $identity->id)
                         unset($groups["employee"]);
                     else
                         unset($groups[$identity->group]);
+                }
                 else
-                    unset($groups["company"]);
+                {
+                    foreach( $groups as $line => $kill )
+                    {
+                        if( $identity->group != $line)
+                            unset($groups[$line]);
+                    }
+                }
             }
         }
 

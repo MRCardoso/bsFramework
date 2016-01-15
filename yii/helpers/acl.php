@@ -19,37 +19,46 @@
 
             if( $forceAllow ) return $output;
 
-            if( ($identity = Yii::$app->user->identity) != NULL && !checkGroup("admin") )
+            if( ($identity = Yii::$app->user->identity) != NULL )
             {
-                $childOfCorporate = \app\models\User::employeeByCompany();
-                $owner = $child = false;
-                if( $model != NULL)
+                $us = new \app\models\User();
+                if( !in_array($identity->group, $us->Allows))
                 {
-                    // get the user_id
-                    $modelId = ( className($model) == "User" ? $model->id : $model->user_id );
-                    // check if the user authenticated is the owner
-                    $owner = $modelId == $identity->id;
-                    // check if the user authenticated is parent of the owner
-                    //$child = in_array($modelId, $childOfCorporate); //enabled for user(employee) see the view
-                    $child = checkGroup("company") && in_array($modelId, $childOfCorporate);
+                    return ["newButton" => false, "btnAction" => false, 'interface' => false ];
                 }
-                // check action[update|delete|view] is in the list of the allow
-                //$allowView = ( checkGroup("company") || preg_match('/[0-9]/', $action) ); //enabled for user(employee) see the view
-                // check permission to access interface create
-                $allowCreate = ( $action == "create" && ( checkGroup("company") || $controller != "user" ) );
-                // check permission to access interface view
+                unset($us);
+                if( !checkGroup("admin"))
+                {
+                    $childOfCorporate = \app\models\User::employeeByCompany();
+                    $owner = $child = false;
+                    if( $model != NULL)
+                    {
+                        // get the user_id
+                        $modelId = ( className($model) == "User" ? $model->id : $model->user_id );
+                        // check if the user authenticated is the owner
+                        $owner = $modelId == $identity->id;
+                        // check if the user authenticated is parent of the owner
+                        //$child = in_array($modelId, $childOfCorporate); //enabled for user(employee) see the view
+                        $child = checkGroup("company") && in_array($modelId, $childOfCorporate);
+                    }
+                    // check action[update|delete|view] is in the list of the allow
+                    //$allowView = ( checkGroup("company") || preg_match('/[0-9]/', $action) ); //enabled for user(employee) see the view
+                    // check permission to access interface create
+                    $allowCreate = ( $action == "create" && ( checkGroup("company") || $controller != "user" ) );
+                    // check permission to access interface view
 
-                $output = [
-                    "newButton" => $controller != "user" || checkGroup("company"),
-                    "interface" => ( ( $owner || $child ) || $allowCreate )
-                    /*
-                    enabled for user(employee) see the view
-                    "btnAction" => ( ( $owner || ( $child && ( checkGroup("company") || !$allowView) ) ) || $allowCreate ),
-                    "interface" => ( ( $owner || ( $child && $allowView) ) || $allowCreate )
-                    */
-                ];
-                if( $attribute != NULL)
-                    return $output[$attribute];
+                    $output = [
+                        "newButton" => $controller != "user" || checkGroup("company"),
+                        "interface" => ( ( $owner || $child ) || $allowCreate )
+                        /*
+                        enabled for user(employee) see the view
+                        "btnAction" => ( ( $owner || ( $child && ( checkGroup("company") || !$allowView) ) ) || $allowCreate ),
+                        "interface" => ( ( $owner || ( $child && $allowView) ) || $allowCreate )
+                        */
+                    ];
+                    if( $attribute != NULL)
+                        return $output[$attribute];
+                }
             }
             return $output;
         }

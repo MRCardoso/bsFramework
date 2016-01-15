@@ -18,10 +18,6 @@
         yii\widgets\DetailView::widget([
             'model' => $model,
             'attributes' => [
-                [
-                    'label' => t('corporation'),
-                    'value' => $model->corporateRegister->name
-                ],
                 'name',
                 'group',
                 'email:email',

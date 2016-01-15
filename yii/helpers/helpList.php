@@ -165,6 +165,7 @@
                 ],
                 "group" => [
                     "admin" => "Administrador",
+                    "user" => "Usuário",
                     "company" =>  "Empresa",
                     "employee" => "Funcionário"
                 ],

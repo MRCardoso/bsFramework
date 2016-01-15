@@ -215,7 +215,7 @@ class MyModel extends ActiveRecord
         $corporate = CorporateRegister::find()->where(["status" => 1]);
 
         if( $withoutAdmin )
-            $corporate->andWhere(["<>", "code", "admin_management"]);
+            $corporate->andWhere(["not in", "code", ["admin_management", "user_test"]]);
 
         if( ($identity = self::corporateId()) != 0 && !checkGroup("admin") )
             $corporate->andWhere(["id" => $identity]);
