@@ -103,6 +103,7 @@
          */
         function mySendMailer($mail, $subject, $message, $dump = [], $layout = "custom")
         {
+            return true;
             if( $mail == 'isAdmin' ) $mail = \Yii::$app->params['adminEmail'];
             $params = [
                 'title' => $subject,

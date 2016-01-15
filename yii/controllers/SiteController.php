@@ -87,6 +87,7 @@ class SiteController extends Controller
     }
     public function actionPassword()
     {
+        throw new NotFoundHttpException(t('The requested page does not exist.'));
         $model = new PasswordForm();
         $model->setScenario('checkMail');
 
@@ -97,6 +98,7 @@ class SiteController extends Controller
     }
     public function actionPassword_reset($token)
     {
+        throw new NotFoundHttpException(t('The requested page does not exist.'));
         $passwordResets = PasswordResets::findToken($token);
         if( $passwordResets )
         {
