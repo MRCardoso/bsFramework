@@ -131,7 +131,7 @@ class Request extends MyModel
     public function findRecent($params)
     {
         $query = Request::find()
-                    ->where(['request.corporate_register_id' => self::corporateId()])
+                    ->where(['request.corporate_register_id' => authData()])
                     ->andWhere(['in', 'situation', [1,2]]);
 
         $dataProvider = new ActiveDataProvider([

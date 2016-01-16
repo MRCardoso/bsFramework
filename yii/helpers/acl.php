@@ -72,11 +72,8 @@
          */
         function checkGroup( $group )
         {
-            if( labelText("group", $group) != NULL )
-            {
-                if( $user = Yii::$app->user->getIdentity() )
-                    return $user->group == $group;
-            }
+            if( ( $user = authData("group") ) != NULL )
+                return in_array( $user, explode('|', $group) );
             return false;
         }
     }
@@ -121,11 +118,21 @@
             else
                 return false;
         }
-        if( ! function_exists('post') )
+    }
+    if( ! function_exists('authData') )
+    {
+        /*
+         | -----------------------------------------------------------------------------------
+         | validate authentication and return user data logged
+         | -----------------------------------------------------------------------------------
+         */
+        function authData($field = 'corporate_register_id')
         {
-            function post($param = NULL)
+            if( ( $user = Yii::$app->user->getIdentity()) != NULL)
             {
-                return Yii::$app->request->post($param);
+                if( $field == '') return $user;
+                return $user->{$field};
             }
+            return NULL;
         }
     }

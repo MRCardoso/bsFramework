@@ -124,10 +124,10 @@ class MyModel extends ActiveRecord
         {
             if ($this->isNewRecord)
             {
-                if( $this->_withCorporate && ( $identity = self::corporateId() ) != 0 )
+                if( $this->_withCorporate && ( $identity = authData() ) != NULL )
                     $this->corporate_register_id = $identity;
 
-                if( $this->_withUser && ( $identity = self::corporateId('id') ) != 0 )
+                if( $this->_withUser && ( $identity = authData('id') ) != NULL )
                     $this->user_id = $identity;
 
                 $this->created_at = date("Y-m-d H:i:s");
@@ -182,10 +182,12 @@ class MyModel extends ActiveRecord
             }
             $equals[$column] = $validField;
         }
-        if( ($identity = self::corporateId()) != 0 )
+        if( ($identity = authData('')) != NULL )
         {
             if(className($this) != 'User' || !checkGroup("admin"))
-                $this->_model->andFilterWhere(['corporate_register_id' => $identity]);
+                $this->_model->andFilterWhere(['corporate_register_id' => $identity->corporate_register_id]);
+            if( className($this) != 'User' && checkGroup("user") )
+                $this->_model->andFilterWhere(['user_id' => $identity->id]);
         }
 
         if( isset($this->_filters["other"]) )
@@ -217,7 +219,7 @@ class MyModel extends ActiveRecord
         if( $withoutAdmin )
             $corporate->andWhere(["not in", "code", ["admin_management", "user_test"]]);
 
-        if( ($identity = self::corporateId()) != 0 && !checkGroup("admin") )
+        if( ($identity = authData()) != NULL && !checkGroup("admin") )
             $corporate->andWhere(["id" => $identity]);
 
         return ArrayHelper::map( $corporate->all(), 'id', 'name');
@@ -236,6 +238,8 @@ class MyModel extends ActiveRecord
             ->andWhere($this->corporateFilter());
         if( !empty($where) )
             $query->andWhere($where);
+        if( ($auth = authData('id')) != NULL && checkGroup("user") )
+            $query->andWhere(['user_id' => $auth]);
         return ArrayHelper::map($query->all(),'id','name');
     }
 
@@ -264,20 +268,8 @@ class MyModel extends ActiveRecord
     {
         $field = ($alias != NULL ? "{$alias}." : "").$field;
 
-        if( ($identity = self::corporateId($field)) != 0 )
+        if( ($identity = authData($field)) != NULL )
             return [$field => $identity];
         return [$field=> 0];
-    }
-    /**
-     * validate authentication and return the property of the authUser
-     *
-     * @param string $field
-     * @return int
-     */
-    protected static function corporateId($field = 'corporate_register_id')
-    {
-        if( ( $identity = \Yii::$app->user->identity) != NULL)
-            return $identity->{$field};
-        return 0;
     }
 }

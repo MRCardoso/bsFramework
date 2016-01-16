@@ -68,11 +68,11 @@ foreach( $model->productRequests as $i => $productRequest)
                 [
                     'label' => t('info_additionals'),
                     'content' => join('', [
-                        $form->field($model, 'description')->textInput(['maxlength' => true]),
-                        $form->field($model, 'observation')->textarea(),
                         $form->field($model, 'request_date')
                             ->widget(\yii\widgets\MaskedInput::className(), ['mask' => '99/99/9999'])
-                            ->widget(\dosamigos\datepicker\DatePicker::className(), viewOption(['model'=>$model,'attribute' => 'request_date'],"datepicker"))
+                            ->widget(\dosamigos\datepicker\DatePicker::className(), viewOption(['model'=>$model,'attribute' => 'request_date'],"datepicker")),
+                        $form->field($model, 'description')->textInput(['maxlength' => true]),
+                        $form->field($model, 'observation')->textarea(),
                     ])
                 ]
             ],
@@ -195,7 +195,7 @@ $(document).ready(function(){
             $("#req-message").show();
             $("#msg-danger").text("você preciso selecionar um produto!");
         }
-        else if( !(/^[0-9]$/.test(quantity)) )
+        else if( !(/^[0-9]{1,}$/.test(quantity)) )
         {
             $("#req-message").show();
             $("#msg-danger").text("A  quantidade de conter um número inteiro!");

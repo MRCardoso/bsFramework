@@ -20,7 +20,7 @@ class CompanyValidator
             [['name', 'status', 'cnpj', 'address', 'start_date', 'end_date', 'phone', 'email', 'created_at', 'updated_at'], 'safe'],
             [['name', 'email'], 'string', 'max' => 90],
             [['cnpj', 'phone'], 'string'],
-            ['start_date', 'validStartEnd', 'params' => 'end_date', 'on' => 'save'],
+            [['start_date', 'end_date'], 'validStartEnd', 'on' => 'save'],
             ['cnpj', CnpjValidator::className(), 'on' => 'save'],
             [['cnpj', 'phone'],'validateNoMask', 'on' => 'save'],
             ['cnpj', 'unique'],

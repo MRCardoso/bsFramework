@@ -115,9 +115,14 @@ class Company extends MyModel
      */
     public function validStartEnd($attribute, $params)
     {
-        if( formatDatabase($this->{$attribute}) > formatDatabase($this->{$params}) )
-            $this->addError($attribute, t("the_start_date_can_not_be_large_that_the_end_date"));
-        if( formatDatabase($this->{$params}) < formatDatabase($this->{$attribute}) )
-            $this->addError($params, t("the_end_date_can_not_be_less_that_the_start_date"));
+        if( $this->end_date != NULL )
+        {
+            if( $this->start_date == NULL )
+                $this->addError("start_date", t("the_start_date_can_not_be_large_that_the_end_date"));
+            if( formatDatabase($this->start_date) > formatDatabase($this->end_date) )
+                $this->addError("start_date", t("the_start_date_can_not_be_large_that_the_end_date"));
+            if( formatDatabase($this->end_date) < formatDatabase($this->start_date) )
+                $this->addError("end_date", t("the_end_date_can_not_be_less_that_the_start_date"));
+        }
     }
 }

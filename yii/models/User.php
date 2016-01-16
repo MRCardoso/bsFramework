@@ -44,7 +44,7 @@ class User extends MyModel implements IdentityInterface
         $this->_filters = [
             'equal' => ['corporate_register_id','status'],
             'like' => ['name', 'group', 'email', 'username'],
-            'other' => ( checkGroup("employee") ? ['id' => Yii::$app->user->id]: [])
+            'other' => ( checkGroup("employee|user") ? ['id' => Yii::$app->user->id]: [])
         ];
     }
 
@@ -120,7 +120,7 @@ class User extends MyModel implements IdentityInterface
                 else
                     $this->group = "employee";
             else
-                $this->group = self::corporateId("group");
+                $this->group = authData("group");
         }
         switch($this->group)
         {
