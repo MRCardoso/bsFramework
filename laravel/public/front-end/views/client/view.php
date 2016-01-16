@@ -3,14 +3,6 @@
         <table class="{{ css_class.table }}">
             <tr>
                 <th class="text-right">
-                    Usuário
-                </th>
-                <td>
-                    <div ng-bind="client.user.name"></div>
-                </td>
-            </tr>
-            <tr>
-                <th class="text-right">
                     Nome
                 </th>
                 <td>

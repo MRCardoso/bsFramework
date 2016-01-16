@@ -147,8 +147,12 @@
                         "name" => "Administrador",
                         "class" => "success"
                     ],
+                    "user" => [
+                        "name" => "Usuario",
+                        "class" => "primary"
+                    ],
                     "company" =>  [
-                        "name" => "Empresa",
+                        "name" => "Companhia",
                         "class" => "warning"
                     ],
                     "employee" => [

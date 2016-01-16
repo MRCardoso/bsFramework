@@ -139,11 +139,14 @@ angular.module('request',[])
                     var total =0;
                     angular.forEach(request.products, function(product,k)
                     {
-                        total += parseInt(product.pivot.quantity) * $filter('validateNumber')(product.pivot.price);
+                        var quantity = parseInt(product.pivot.quantity) || 1;
+                        total += quantity * $filter('validateNumber')(product.pivot.price);
                     });
+
                     if( $scope.product_request != undefined)
                     {
-                        total += parseInt($scope.product_request.quantity) * $filter('validateNumber')($scope.product_request.price);
+                        var quantity = parseInt($scope.product_request.quantity) || 1;
+                        total += quantity * $filter('validateNumber')($scope.product_request.price);
                     }
                     var freight     = $filter('validateNumber')(request.freight);
                     var discount    = $filter('validateNumber')(request.discount);
@@ -165,7 +168,7 @@ angular.module('request',[])
                     {
                         $scope.messageProduct = "você preciso selecionar um produto!";
                     }
-                    else if( !(/^[0-9]$/.test(this.product_request.quantity)) )
+                    else if( !(/^[0-9]{1,}$/.test(this.product_request.quantity)) )
                     {
                         $scope.messageProduct = "A  quantidade de conter um número inteiro!";
                     }

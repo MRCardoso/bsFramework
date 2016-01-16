@@ -8,7 +8,7 @@ angular
          | Start Factory that contains all generic methods
          | -----------------------------------------------------------------
          */
-        main.init({moduleName:'client'});
+        main.init({moduleName:'client', datePickerDefault: {startView: 2}});
 
         /*
          | -----------------------------------------------------------------

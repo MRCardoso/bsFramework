@@ -1,7 +1,7 @@
 <div class="{{css_class.save}}" ng-controller="UserController" ng-init="findOne()">
     <div ng-if="blockPage.status==200">
         <table class="{{css_class.table}}">
-            <tr>
+            <tr ng-if="auth.group=='admin'">
                 <th>Corporação</th>
                 <td>{{ user.corporate_register.name }}</td>
             </tr>

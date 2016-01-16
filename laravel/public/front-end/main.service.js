@@ -232,5 +232,13 @@ angular.module('main')
                     $rootScope.module["hasPermission"] = { newButton: false, 'interface': false };
                     $this.getMessage(reason);
                 });
+        };
+        this.find = function(module, attribute)
+        {
+            module.query(function(response){
+                $rootScope["attribute"] = response;
+            }, function (reason) {
+                $this.getMessage(reason);
+            });
         }
     }]);

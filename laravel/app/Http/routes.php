@@ -12,6 +12,8 @@
 */
 Route::get('/', function ()
 {
+    if( ($group = authData('group')) != NULL && !in_array($group,\App\Services\UserService::groupAllow()) )
+        return view('errors.404');
     return view('app');
 });
 /*

@@ -103,7 +103,16 @@ return [
         ],
         'username' => [
             'unique_user' => 'O valor indicado para o campo :attribute já se encontra utilizado.'
-        ]
+        ],
+        'group' => [
+            'valid_group' => "O grupo não foi encontrado!"
+        ],
+        'start_date' => [
+            'date_valid' => "A \"data inicial\" não pode ser maior que a \"data fim\""
+        ],
+        'end_date' => [
+            'date_valid' => "A \"data fim\" não pode ser menor que a \"data inicial\""
+        ],
     ],
 
     /*

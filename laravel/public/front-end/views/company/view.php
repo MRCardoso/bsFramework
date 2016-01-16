@@ -3,14 +3,6 @@
         <table class="{{ css_class.table }}">
             <tr>
                 <th class="text-right">
-                    Usuário
-                </th>
-                <td>
-                    {{ company.user.name }}
-                </td>
-            </tr>
-            <tr>
-                <th class="text-right">
                     Vinculo
                 </th>
                 <td>

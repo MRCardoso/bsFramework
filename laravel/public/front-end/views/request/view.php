@@ -33,27 +33,6 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a class="collapsed" ng-click="$event.preventDefault()" data-toggle="collapse" data-parent="#accordion" href="#productCollapse">
-                            Produtos
-                        </a>
-                    </h4>
-                </div>
-                <div id="productCollapse" class="panel-collapse collapse" role="tabpanel">
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <div class="list-group-item" ng-repeat="product in request.products">
-                                {{ product.pivot.quantity }} - {{ product.name }}, custo R$ {{ product.pivot.price }}
-                                <div class="pull-right">
-                                    <generic-field module="{type:'size', resource: product, text:sizeText}"></generic-field>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                         <a class="collapsed" ng-click="$event.preventDefault()" data-toggle="collapse" data-parent="#accordion" href="#deliverymanCollapse" aria-expanded="false" aria-controls="deliverymanCollapse">
@@ -85,6 +64,27 @@
                 </div>
             </div>
             <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="collapsed" ng-click="$event.preventDefault()" data-toggle="collapse" data-parent="#accordion" href="#productCollapse">
+                            Produtos
+                        </a>
+                    </h4>
+                </div>
+                <div id="productCollapse" class="panel-collapse collapse" role="tabpanel">
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <div class="list-group-item" ng-repeat="product in request.products">
+                                {{ product.pivot.quantity }} - {{ product.name }}, custo R$ {{ product.pivot.price }}
+                                <div class="pull-right">
+                                    <generic-field module="{type:'size', resource: product, text:sizeText}"></generic-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                         <a class="collapsed" ng-click="$event.preventDefault()" data-toggle="collapse" data-parent="#accordion" href="#requestCollapse" aria-expanded="false" aria-controls="requestCollapse">
@@ -95,10 +95,6 @@
                 <div id="requestCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
                         <table class="{{css_class.table}}">
-                            <tr>
-                                <th class="text-right">Usuário</th>
-                                <td>{{ request.user.name }}</td>
-                            </tr>
                             <tr>
                                 <th class="text-right">Descrição</th>
                                 <td>{{ request.description}}</td>

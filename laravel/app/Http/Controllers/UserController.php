@@ -20,7 +20,7 @@ class UserController extends MainController
     }
     public function index()
     {
-        $id = ( checkGroup("employee") ? auth()->user()->id : NULL);
+        $id = ( checkGroup("employee|user") ? auth()->user()->id : NULL);
 
         return response()->json($this->_repository->findRule($id));
     }

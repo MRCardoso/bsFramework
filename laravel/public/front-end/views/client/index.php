@@ -2,18 +2,16 @@
     <table class="{{css_class.table}}">
         <thead>
             <tr>
-                <th>Usuário</th>
                 <th>Nome</th>
                 <th>Telefone</th>
+                <th>Aniversário</th>
                 <th>Endereço</th>
-                <th>cidade</th>
                 <th>Status</th>
                 <th width="8%">Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr dir-paginate="client in clients | orderBy: '-id' | filter:filter | itemsPerPage: limit" current-page="currentPage">
-                <td>{{ client.user.name }}</td>
                 <td>{{ client.name }}</td>
                 <td>{{ client.phone | phone}}</td>
                 <td>{{ client.birthday | date:'dd/MM/yyyy' }}</td>

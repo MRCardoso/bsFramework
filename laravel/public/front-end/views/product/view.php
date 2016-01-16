@@ -2,10 +2,6 @@
     <div ng-if="blockPage.status==200">
         <table class="{{css_class.table}}">
             <tr>
-                <th>Usuário</th>
-                <td>{{ product.user.name}}</td>
-            </tr>
-            <tr>
                 <th>Nome</th>
                 <td>{{ product.name}}</td>
             </tr>

@@ -2,7 +2,6 @@
     <table class="{{ css_class.table }}">
         <thead>
             <tr>
-                <th>Usuário</th>
                 <th>Entregador</th>
                 <th>Cliente</th>
                 <th>Produto</th>
@@ -15,7 +14,6 @@
         </thead>
         <tbody>
             <tr dir-paginate="request in requests | orderBy: '-id' | filter:filter | itemsPerPage: limit" current-page="currentPage">
-                <td>{{request.user.name}}</td>
                 <td>{{request.deliveryman.name}}</td>
                 <td>{{request.client.name}}</td>
                 <td>{{request.product.name}}</td>

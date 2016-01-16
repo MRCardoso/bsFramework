@@ -1,12 +1,5 @@
 <div class="{{ css_class.save }}" ng-controller="RequestController" ng-init="findOne()">
     <div ng-if="blockPage.status==200">
-        <div class="alert alert-warning alert-dismissible display-none" role="alert"
-            ng-class="{'display-show': clients.length == 0 || requests.length == 0 || products.length == 0}">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Atenção!</strong>
-            Para efetuar este pedido você precisa cadastrar
-            <strong>clientes</strong>, <strong>entregadores</strong> e <strong>produtos</strong>.
-        </div>
         <div class="breadcrumb alert alert-dismissible" role="alert">
             Pedido: <strong>{{ request.description || "não informado"}}</strong>,<br>
             valor total: {{ totalValue | currency }}
@@ -95,7 +88,12 @@
                             Data Pedido:
                         </label>
                         <div class="col-md-6">
-                            <input type="text" ng-model="request.request_date" class="form-control date" mask="39/19/9999">
+                            <div class="input-group">
+                                <input type="text" ng-model="request.request_date" class="form-control date" mask="39/19/9999">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">

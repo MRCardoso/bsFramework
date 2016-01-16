@@ -81,10 +81,12 @@ class Repository extends BaseRepository
                              Array $_sort = ['id', 'DESC'])
     {
         $where = [];
-        if( ( $user = authData() ) != NULL )
+        if( ( $user = authData('') ) != NULL )
         {
             if( $this->_table_name != 'user' || !checkGroup("admin") )
-                $where["corporate_register_id"] = $user;
+                $where["corporate_register_id"] = $user->corporate_register_id;
+            if( $this->_table_name != 'user' && checkGroup("user") )
+                $where["user_id"] = $user->id;
         }
 
         if( $id != NULL )

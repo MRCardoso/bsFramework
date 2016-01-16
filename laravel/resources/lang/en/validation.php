@@ -97,6 +97,21 @@ return [
         'cpf' => [
             'with_mask' => 'The :attribute must have exatly :parameter digit',
         ],
+        'email' => [
+            'unique_user' => 'The figure for the :attribute field is already used.'
+        ],
+        'username' => [
+            'unique_user' => 'The figure for the :attribute field is already used.'
+        ],
+        'group' => [
+            'valid_group' => "The group not found!"
+        ],
+        'start_date' => [
+            'date_valid' => "the \"start date\" can not be large that the \"end date\""
+        ],
+        'end_date' => [
+            'date_valid' => "the \"end date\" can not be less that the \"start date\""
+        ]
     ],
 
     /*

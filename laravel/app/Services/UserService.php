@@ -9,12 +9,19 @@ use App\Repositories\UserRepositoryEloquent;
 use App\Validators\UserValidator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Lang;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 class UserService extends Service
 {
     protected $_withUser = false;
+    private static $groupAllow = ['admin','user','company', 'employee'];
+
+    public static function groupAllow()
+    {
+        return self::$groupAllow;
+    }
     /**
      * @var CorporateRegisterRepository
      */
@@ -88,7 +95,7 @@ class UserService extends Service
 
             DB::commit();
 
-            if(isset($data["signup"]) && $data["signup"] ) Auth::login($module);
+            if( isset($data["signup"]) && $data["signup"] ) Auth::login($module);
 
             return response()->json([
                 "module" => $module,
@@ -104,7 +111,9 @@ class UserService extends Service
      * verify which group belongs the current user to create
      *
      * @param $data
+     * @param null $corporate
      * @return \Illuminate\Http\JsonResponse|null
+     * @throws ValidatorException
      */
     public function validateGroup(&$data, $corporate = NULL)
     {
@@ -113,27 +122,25 @@ class UserService extends Service
             $corporateRegister = [];
             if( isset($data["signup"]) && $data["signup"] )
             {
-                if ( !in_array($data["group"], ['company', 'employee']))
-                    $data["group"] = NULL;
+                $this->_validator->setCustomRules("group", "required|validGroup:signup");
             }
             elseif( !checkGroup("admin") )
             {
                 if( checkGroup("company") )
-                {
-                    if(isset($data["id"]) && $data["id"] == auth()->user()->id )
+                    if( isset($data["id"]) && $data["id"] == authData("id") )
                         $data["group"] = "company";
                     else
                         $data["group"] = "employee";
-                }
                 else
-                {
-                    $data["group"] = "employee";
-                }
+                    $data["group"] = authData("group");
             }
             switch($data["group"])
             {
                 case "admin":
                     $corporateRegister = $this->_corporateRegisterRepository->findWhere(["code" => env("MY_CODE", "standard")]);
+                    break;
+                case "user":
+                    $corporateRegister = $this->_corporateRegisterRepository->findWhere(["code"=> "user_test"]);
                     break;
                 case "employee":
                     if( ($corporate = authData("CorporateRegister") ) != NULL && checkGroup("company") )

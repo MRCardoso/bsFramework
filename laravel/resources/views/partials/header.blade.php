@@ -23,6 +23,7 @@
         <script language="javascript" src="{{ myUrl('/lib/angular-bootstrap/ui-bootstrap-tpls.js') }}"></script>
         <script language="javascript" src="{{ myUrl('/lib/bootbox/bootbox.js') }}"></script>
         <script language="JavaScript" src="{{ myUrl('/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+        <script language="JavaScript" src="{{ myUrl('/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js') }}"></script>
         <script language="JavaScript" src="{{ myUrl('/lib/bootstrap/js/tooltip.js') }}"></script>
         <script language="JavaScript" src="{{ myUrl('/lib/angular-toastr/dist/angular-toastr.tpls.js') }}"></script>
         <script language="Javascript" src="{{ myUrl('/lib/angular-utils-pagination/dirPagination.js') }}"></script>

@@ -2,7 +2,6 @@
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Usuário</th>
                 <th>Empresa</th>
                 <th>name</th>
                 <th>CPF</th>
@@ -14,7 +13,6 @@
         </thead>
         <tbody>
             <tr dir-paginate="deliveryman in deliverymen | orderBy: '-id' | filter:filter | itemsPerPage: limit" current-page="currentPage">
-                <td>{{deliveryman.user.name}}</td>
                 <td>{{deliveryman.company.name}}</td>
                 <td>{{deliveryman.name}}</td>
                 <td>{{deliveryman.cpf | registry}}</td>

@@ -2,10 +2,6 @@
     <div ng-if="blockPage.status==200">
         <table class="{{ css_class.table }}">
             <tr>
-                <th class="text-right">Usuário</th>
-                <td>{{ deliveryman.user.name }}</td>
-            </tr>
-            <tr>
                 <th class="text-right">Empresa</th>
                 <td>{{ deliveryman.company.name }} - ({{ deliveryman.company.cnpj | registry}})</td>
             </tr>

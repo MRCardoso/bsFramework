@@ -8,7 +8,13 @@ angular
                     moduleName: '',
                     messageDrop: [],
                     authenticate: true,
-                    limit: 8
+                    limit: 8,
+                    datePickerDefault: {
+                        language: 'pt-BR',
+                        format: "dd/mm/yyyy",
+                        todayHighlight: true,
+                        autoclose: true
+                    }
                 },
                 css_class = {
                     "table": "table table-striped table-bordered table-hover",
@@ -20,6 +26,7 @@ angular
                     save: MainService.save,
                     remove: MainService.remove,
                     findOne: MainService.findOne,
+                    find: MainService.find,
                     ajaxRequest: MainService.ajaxRequest
                 };
             return main;
@@ -34,6 +41,7 @@ angular
                     business    = businessRules("json");
 
                 params = angular.extend({}, defaults, params);
+                var datepickerOpt = angular.extend({}, defaults.datePickerDefault, params.datePickerDefault);
                 defaults.authenticate = params.authenticate;
 
                 businessRules("auth");
@@ -88,11 +96,7 @@ angular
                 $(business.element).addClass('active');
                 $(".template-head")[($rootScope.save?'hide':'show')]();
                 $timeout(function () {
-                    $(".date").datepicker({
-                        format: "dd/mm/yyyy",
-                        todayHighlight: true,
-                        autoclose: true
-                    });
+                    $(".date").datepicker(datepickerOpt);
                 },100);
             }
 

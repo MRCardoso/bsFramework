@@ -17,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Validator::extend('with_mask', 'App\\Validators\\Validator@validate');
         Validator::extend('uniqueUser', 'App\\Validators\\Validator@uniqueUser');
+        Validator::extend('validGroup', 'App\\Validators\\Validator@validGroup');
+        Validator::extend('dateValid', 'App\\Validators\\Validator@dateValid');
         Validator::replacer('with_mask', 'App\\Validators\\Validator@replace');
         Blade::extend(function ($value) {
             return preg_replace('/(\s*)@(break|continue)(\s*)/', '$1<?php $2; ?>$3', $value);

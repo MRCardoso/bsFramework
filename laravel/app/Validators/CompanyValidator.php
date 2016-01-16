@@ -17,6 +17,8 @@ class CompanyValidator extends LaravelValidator
         "cnpj"                      => "required|with_mask:14",
         "address"                   => "max:120",
         "phone"                     => "with_mask:11",
-        "email"                     => "max:90|email"
+        "email"                     => "max:90|email",
+        "start_date"                => "dateValid",
+        "end_date"                  => "dateValid",
     ];
 }

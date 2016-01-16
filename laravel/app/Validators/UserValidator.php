@@ -18,7 +18,7 @@ class UserValidator extends LaravelValidator
         'corporate_register_id' => 'required',
         'username' => 'required|uniqueUser',
         'name' => 'required|max:255',
-        'group' => 'required',
+        'group' => 'required|validGroup',
         'password' => 'required|confirmed|min:6',
         'email' => 'required|email|max:255|uniqueUser',
     ];
@@ -28,5 +28,11 @@ class UserValidator extends LaravelValidator
         {
             $this->rules["password"] = 'confirmed|min:6';
         }
+    }
+
+    public function setCustomRules($field, $rule)
+    {
+        unset($this->rules[$field]);
+        $this->rules[$field] = $rule;
     }
 }

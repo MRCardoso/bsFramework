@@ -54,7 +54,7 @@ angular.module('user',[])
                                 else
                                     list.push($scope.groups["employee"]);
                             else
-                                list.push($scope.groups["employee"]);
+                                list.push($scope.groups[$scope.auth.group]);
                         }
                         else{
                             list = $scope.groups;
