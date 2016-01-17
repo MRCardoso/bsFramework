@@ -1,19 +1,22 @@
 <div class="container">
-    <div class="col-md-5 btn-primary" style="margin-bottom: 2%">
-        <h3 class="text-center">Origem</h3>
-        <div>
-            <p style="text-indent: 40px">
-                Este sistema teve origem na apresentação do trabalho final da faculdade,
-                que tinha como objetivo a criação de um sistema web, para uma empresa ficticia chamada “Meveana” (uma pizzaria),
-                que visava automatizar seu processo de entrega de pizza.
-            </p>
-            <a href role="button" style="color: #222" data-toggle="modal" data-target="#scenario">
-                veja o cenário proposto
-            </a>
+    <div class="col-md-5 pull-left">
+        <div class="btn-primary" style="padding: 0 3%">
+            <h3 class="text-center">Origem</h3>
+            <div>
+                <p class="indent">
+                    Este sistema teve origem na apresentação do trabalho final da faculdade,
+                    que tinha como objetivo a criação de um sistema web, para uma empresa ficticia chamada “Meveana” (uma pizzaria),
+                    que visava automatizar seu processo de entrega de pizza.
+                </p>
+                <a href role="button" style="color: #222" data-toggle="modal" data-target="#scenario">
+                    veja o cenário proposto
+                </a>
+                <a href role="button" style="color: #222" data-target="#diagram" data-toggle="modal" class="pull-right">Ver estrutura</a>
+            </div>
         </div>
     </div>
-    <div class="col-md-6 pull-right btn-warning">
-        <div>
+    <div class="col-md-6 pull-right">
+        <div class="btn-warning" style="padding: 0 3%">
             <h3 class="text-center">autenticação e controle de acesso</h3>
             <p class="indent">
                 Pensando no cenário que uma empresa terá varios funcionários e os mesmo poderam ou não ter seus próprios logins,
@@ -34,18 +37,20 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="col-md-5 mrc-btn-light">
-        <h3 class="text-center">Desenvolvimento</h3>
-        <p class="indent">
-            A principio o sistema foi desenvolvido em PHP com laravel e angularjs, mas preferi ir além,
-            pensando em explorar o conhecimento adquirido e praticar os frameworks com que tive contato (Laravel e Yii)
-            alterando a estrutura do sistema, para que a aplicação possa rodar nos dois framework,
-            a mesma regra de negócio e banco de dados, rodando em frameworks diferentes.
-        </p>
-        <p class="indent">
-            A tecnologia não faz um bom profissional, mas um bom profissional saber trabalhar diferentes tecnologia.
-        </p>
+        <div class="mrc-btn-light" style="padding: 0 3%">
+            <h3 class="text-center">Desenvolvimento</h3>
+            <p class="indent">
+                A principio o sistema foi desenvolvido em PHP com laravel e angularjs, mas preferi ir além,
+                pensando em explorar o conhecimento adquirido e praticar os frameworks com que tive contato (Laravel e Yii)
+                alterando a estrutura do sistema, para que a aplicação possa rodar nos dois framework,
+                a mesma regra de negócio e banco de dados, rodando em frameworks diferentes,
+                não ha objetivo comercial nisto é apenas uma maneira de demonstrar como
+                uma arquitetura trabalha sendo desenvolvida por tecnologias diferente.
+            </p>
+            <p class="indent">
+                A tecnologia não faz um bom profissional, mas um bom profissional saber trabalhar diferentes tecnologia.
+            </p>
+        </div>
     </div>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog" id="scenario">
@@ -133,3 +138,17 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="diagram">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Diagrama</h4>
+            </div>
+            <div class="modal-body">
+                <img src="../../images/DiagramasdaUML.jpg" width="100%">
+            </div>
+        </div>
+    </div>
+</div>
