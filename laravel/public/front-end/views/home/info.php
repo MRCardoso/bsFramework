@@ -26,7 +26,8 @@
         </li>
         <li>
             <a href="http://laravel.com/" target="_blank" popover-placement="bottom" popover-title="laravel"
-               popover="Framework MVC back-end para construção de apliações agéis e poderosas em modelo de API restful" popover-trigger="mouseenter">
+               popover="Framework MVC back-end para construção de apliações agéis e poderosas em modelo de API restful,
+               tendo um poderoso ORM (Eloquent) para gerenciamento de banco de dados" popover-trigger="mouseenter">
                 <div class="box image-laravel"></div>
             </a>
         </li>
