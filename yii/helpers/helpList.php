@@ -166,7 +166,7 @@
                 "group" => [
                     "admin" => "Administrador",
                     "user" => "Usuário",
-                    "company" =>  "Empresa",
+                    "company" =>  "Companhia",
                     "employee" => "Funcionário"
                 ],
                 "modules" => [

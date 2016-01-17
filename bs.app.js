@@ -5,7 +5,8 @@ var appName = 'bsFramework';
 var appModule = angular.module(appName,[
     "ngResource",
     "ngRoute",
-    "bs.main"
+    "bs.main",
+    "bs.feedback"
 ]);
 
 appModule.config(["$locationProvider", function ($locationProvider)

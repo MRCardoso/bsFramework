@@ -169,3 +169,13 @@ Route::group(['prefix' => 'password'], function(){
         Route::post('reset', 'Auth\PasswordController@postReset');
     }
 });
+
+/*
+ | --------------------------------------
+ | Feedback
+ | --------------------------------------
+ */
+Route::group(['prefix' => 'feedback'], function(){
+    Route::get('', 'FeedbackController@getToken');
+    Route::post('', 'FeedbackController@store');
+});

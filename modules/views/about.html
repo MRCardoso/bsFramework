@@ -1,6 +1,12 @@
+<style>
+    body{
+        background: url('../../images/cursos-virtuales-tecnologia.jpg') no-repeat;
+        background-size: 100% 100%
+    }
+</style>
 <div class="container">
     <div class="col-md-5 pull-left">
-        <div class="btn-primary" style="padding: 0 3%">
+        <div class="btn-primary block-item">
             <h3 class="text-center">Origem</h3>
             <div>
                 <p class="indent">
@@ -11,33 +17,33 @@
                 <a href role="button" style="color: #222" data-toggle="modal" data-target="#scenario">
                     veja o cenário proposto
                 </a>
-                <a href role="button" style="color: #222" data-target="#diagram" data-toggle="modal" class="pull-right">Ver estrutura</a>
+                <!--<a href role="button" style="color: #222" data-target="#diagram" data-toggle="modal" class="pull-right">Ver estrutura</a>-->
             </div>
         </div>
     </div>
     <div class="col-md-6 pull-right">
-        <div class="btn-warning" style="padding: 0 3%">
+        <div class="btn-warning block-item">
             <h3 class="text-center">autenticação e controle de acesso</h3>
             <p class="indent">
-                Pensando no cenário que uma empresa terá varios funcionários e os mesmo poderam ou não ter seus próprios logins,
+                Pensando no cenário que uma empresa terá varios funcionários e os mesmos poderão ou não ter seus próprios logins,
                 cada usuário ira pertencer a uma corporação, e esta ira definir o que o usuário logado podera ver.
             </p>
             <div>
                 desse modo estruturei o acesso ao sistema da seguinte maneira:
                 <ul>
                     <li>
-                        se o grupo do usuário for "Empresa", este ira gerenciar sua corporação e seus funcionários(adicionar|remover),
+                        se o grupo de usuário for "Companhia", este ira gerenciar sua corporação e seus funcionários(adicionar|remover),
                         ele ira criar sua corporação no momento do cadastro.
                     </li>
                     <li>
-                        se o grupo do usuário for "Funcionário", ele estará ligado a uma corporação (usuário grupo empresa),
-                        desse modo ao logar no sistem ele poderá ver (pedidos, clientes, produtos, etc...) de seus colegas e da empresa,
+                        se o grupo de usuário for "Funcionário", ele estará ligado a uma corporação (usuário grupo Companhia),
+                        desse modo ao logar no sistem ele poderá ver (pedidos, clientes, produtos, etc...) de seus colegas e da Companhia,
                         mas poderá editar apenas os que ele mesmo criou.
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="mrc-btn-light" style="padding: 0 3%">
+        <div class="mrc-btn-light block-item">
             <h3 class="text-center">Desenvolvimento</h3>
             <p class="indent">
                 A principio o sistema foi desenvolvido em PHP com laravel e angularjs, mas preferi ir além,
@@ -58,7 +64,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">SISTEMA DE CONTROLE DE ENTREGA DE PIZZA</h4>
+                <h4 class="modal-title">Sistema de Controle de Entrega de Pizza</h4>
             </div>
             <div class="modal-body">
                 <div>
@@ -147,7 +153,6 @@
                 <h4 class="modal-title">Diagrama</h4>
             </div>
             <div class="modal-body">
-                <img src="../../images/DiagramasdaUML.jpg" width="100%">
             </div>
         </div>
     </div>

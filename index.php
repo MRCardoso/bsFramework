@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
     <head>
         <meta charset="UTF-8">
         <title>Sistema de gerenciamento</title>
@@ -83,26 +83,9 @@
         <script language="JavaScript" src="libs/angular-route/angular-route.js"></script>
         <script language="JavaScript" src="libs/angular-resource/angular-resource.js"></script>
         <script language="JavaScript" src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script language="JavaScript" src="modules/controllers/bs.feedback.js"></script>
         <script language="JavaScript" src="modules/bs.main.js"></script>
         <script language="JavaScript" src="bs.app.js"></script>
         <script language="JavaScript" src="bs.routes.js"></script>
-        <script language="JavaScript">
-            $(document).ready(function(){
-                //                $.ajax({
-                //                    url: '/yii/web/client/create/',
-                //                    method:'post',
-                //                    data: {
-                //    //                        _csrf: 'VTJiSzM1aU0HeRN/cHErOAp2DwVDBis3P0QmPWFCXD8TXDETV2AzOw==',
-                //                        Client: {
-                //                            name: 'hacker list',
-                //                            status: 0
-                //                        }
-                //                    },
-                //                    success: function(data){
-                //                        console.log(data);
-                //                    }
-                //                })
-            })
-        </script>
     </body>
 </html>

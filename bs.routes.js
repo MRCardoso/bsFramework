@@ -11,7 +11,7 @@ angular.module('bs.main')
             templateUrl: 'modules/views/about.html'
         })
         .when('/feedback',{
-            templateUrl: 'modules/views/feedback.html'
+            templateUrl: 'modules/views/feedback.php'
         })
         .when('/laravel',{
             templateUrl: 'laravel/index.php'

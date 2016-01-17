@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt">
     <head>
-        <title ng-bind="moduleLabel || 'Sistema de Pizza'">
+        <title ng-bind="moduleLabel || 'Sistema de Gerenciamento'">
             loading...
         </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

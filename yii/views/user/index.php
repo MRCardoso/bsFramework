@@ -21,7 +21,7 @@
             [
                 'attribute' => 'group',
                 'value' => function($data){
-                    return t($data->group);
+                    return labelText('group', $data->group);
                 }
             ],
         ])
