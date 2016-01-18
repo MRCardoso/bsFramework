@@ -22,3 +22,17 @@
     </ul>
     <a href="https://github.com/MRCardoso/bsFramework/tree/master/yii/" class="btn mrc-btn">Veja o código fonte no GitHub</a>
 </div>
+<?php
+$this->registerJs('
+$(document).ready(function(){
+    var size = Math.round(window.innerWidth/9);
+    var styless = { width: size+"px", height: size+"px" };
+    $(".box").css(styless);
+    $(window).resize(function ()
+    {
+        var size = Math.round(window.innerWidth/9);
+        var styless = { width: size+"px", height: size+"px" };
+        $(".box").css(styless);
+    })
+})
+');

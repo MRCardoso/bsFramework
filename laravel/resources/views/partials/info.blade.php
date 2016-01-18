@@ -31,5 +31,14 @@
         }).on('mouseleave', function () {
             $(this).children('span[id=signin-txt]').text("");
         });
+        var size = Math.round(window.innerWidth/9);
+        var styless = { width: size+'px', height: size+'px' };
+        $('.box').css(styless);
+        $(window).resize(function ()
+        {
+            var size = Math.round(window.innerWidth/9);
+            var styless = { width: size+'px', height: size+'px' };
+            $('.box').css(styless);
+        });
     });
 </script>

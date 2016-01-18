@@ -5,6 +5,9 @@ angular.module('bs.feedback',[])
     .controller('FeedBackController', ['$scope', '$resource', function($scope,$resource)
     {
         $scope.feedback = {name:'',email:'',message:'',view_home: false};
+        $scope.find = function () {
+            $scope.feedbacks = $resource('/laravel/feedback/list').query();
+        }
         $scope.save = function()
         {
             var Feedback = $resource('/laravel/feedback');

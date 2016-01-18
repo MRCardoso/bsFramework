@@ -1,17 +1,50 @@
-<div class="content text-center">
-    <h2 class="header-title">
-        Selecione o Framework
-    </h2>
-    <ul class="list-libraries">
-        <li>
-            <a href="/laravel/#!/" popover-placement="bottom" popover-title="laravel" popover="Framework MVC back-end para construção de apliações agéis e poderosas em modelo de API restful" popover-trigger="mouseenter">
-                <div class="box image-laravel"></div>
-            </a>
-        </li>
-        <li>
-            <a href="/yii" popover-placement="bottom" popover-title="laravel" popover="Framework MVC back-end para construção de apliações agéis e poderosas em modelo de API restful" popover-trigger="mouseenter">
-                <div class="box image-yii"></div>
-            </a>
-        </li>
-    </ul>
+<div class="content-large">
+    <div class="text-center">
+        <h2 class="header-title">
+            Selecione o Framework
+        </h2>
+        <ul class="list-libraries">
+            <li>
+                <a href="/laravel/#!/" popover-placement="bottom" popover-title="laravel" popover="Framework MVC back-end para construção de apliações agéis e poderosas em modelo de API restful" popover-trigger="mouseenter">
+                    <div class="box image-laravel"></div>
+                </a>
+            </li>
+            <li>
+                <a href="/yii" popover-placement="bottom" popover-title="laravel" popover="Framework MVC back-end para construção de apliações agéis e poderosas em modelo de API restful" popover-trigger="mouseenter">
+                    <div class="box image-yii"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div ng-controller="FeedBackController" ng-init="find()">
+        <section ng-if="feedbacks.length>0">
+            <header>
+                <h3>Feedbacks de usuários que acessaram o sistema</h3>
+            </header>
+            <article class="list-group">
+                <div class="list-group-item" ng-repeat="feed in feedbacks">
+                    <h5>
+                        {{ feed.name || 'Usuário anônimo'}}
+                        <span ng-show="feed.email!=''">
+                            {{ '('+feed.email+')' }}
+                        </span>
+                    </h5>
+                    <p><strong>Mensagem:</strong> {{ feed.message }}</p>
+                </div>
+            </article>
+        </section>
+    </div>
+    <script language="JavaScript">
+        $(document).ready(function(){
+            var size = Math.round(window.innerWidth/9);
+            var styless = { width: size+'px', height: size+'px' };
+            $('.box').css(styless);
+            $(window).resize(function ()
+            {
+                var size = Math.round(window.innerWidth/9);
+                var styless = { width: size+'px', height: size+'px' };
+                $('.box').css(styless);
+            })
+        })
+    </script>
 </div>

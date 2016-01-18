@@ -10,6 +10,13 @@ use App\Http\Controllers\Controller;
 
 class FeedbackController extends Controller
 {
+    public function index()
+    {
+        $feedbacks = Feedback::where(['view_home' => true])
+            ->orderBy('id', 'desc')
+            ->get();
+        return response()->json($feedbacks);
+    }
     public function getToken()
     {
         return response()->json(['token' => csrf_token()]);
