@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/bs.style.css">
     </head>
     <body>
-        <div ng-include="'menu.html'"></div>
+        <div ng-include="'menu.php'"></div>
         <div ng-view></div>
         <script language="JavaScript" src="/libs/jquery/dist/jquery.min.js"></script>
         <script language="Javascript" src="/libs/angular/angular.js"></script>
