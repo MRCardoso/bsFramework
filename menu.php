@@ -1,4 +1,6 @@
-<?php $version = exec('sudo git describe --abbrev=0 --tags'); ?>
+<?php
+$version = 0;//exec('sudo git describe --abbrev=0 --tags');
+?>
 <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
