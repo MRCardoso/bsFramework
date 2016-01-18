@@ -1,3 +1,4 @@
+<?php $version = exec('git describe --abbrev=0 --tags'); ?>
 <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,6 +22,13 @@
                 </li>
                 <li>
                     <a ng-href="/#!/feedback">FeedBack</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://github.com/MRCardoso/bsFramework/releases/tag/<?php echo $version; ?>" role="button" target="_blank">
+                        <?php echo "Versão {$version}";?>
+                    </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
