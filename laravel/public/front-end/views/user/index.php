@@ -17,7 +17,7 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{groups[user.group].name}}</td>
-            <td>{{ user.corporate_register_id}} {{user.username}}</td>
+            <td>{{user.username}}</td>
             <td>
                 <generic-field module="{type:'status', resource:user, text:statusText}"></generic-field>
             </td>
