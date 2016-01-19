@@ -126,7 +126,7 @@ class User extends MyModel implements IdentityInterface
         {
             case "admin":
                 $this->setScenario('corporateSave');
-                $corporateRegister = CorporateRegister::find()->where(["code"=> "admin_management"])->one();
+                $corporateRegister = CorporateRegister::find()->where(["code"=> Yii::$app->params['adminGroup']])->one();
                 break;
             case "user":
                 $this->setScenario('corporateSave');

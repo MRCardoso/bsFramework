@@ -4,6 +4,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use app\models\User;
+use yii\helpers\ArrayHelper;
 
 class PasswordForm extends Model{
 
@@ -15,7 +16,6 @@ class PasswordForm extends Model{
         return [
             [['email', 'password','password_confirmation'],'required', 'on' => 'changePassword'],
             [['email'],'required', 'on' => 'checkMail'],
-            ['email', 'validaTokenCreate', 'on' => 'checkMail'],
             ['email', 'validateEmail'],
             ['email', 'email'],
             ['password_confirmation', 'compare', 'compareAttribute'=>'password']
@@ -39,25 +39,26 @@ class PasswordForm extends Model{
         else
             $this->_user = $user;
     }
-    public function validaTokenCreate($attribute, $params)
-    {
-        if ( ( $pr = PasswordResets::findEmail($this->email)) != NULL )
-            $this->addError($attribute, t('Already_exists_a_request_of_change_password_for_this_email_{email}.', ['email'=>$this->email]) );
-        return true;
-    }
 
     public function sendPassword()
     {
         if( $this->validate() && $this->_user != NULL)
         {
+            $transaction = Yii::$app->db->beginTransaction();
+
+            PasswordResets::deleteAll(["email"=> $this->_user->email]);
+
             $reset = new PasswordResets();
             $reset->email = $this->_user->email;
             $reset->token = hash('sha256', $this->_user->remember_token+Yii::$app->params['salt']+time());
             if( $reset->saveToken() )
             {
-                mySendMailer($this->email, "Your Password Reset Link",$reset->token, [], "resetPassword");
+                $transaction->commit();
+                mySendMailer($this->email, "Seu link de recuperação de senha.",$reset->token, [], "resetPassword");
                 return true;
             }
+            else
+                $transaction->rollBack();
         }
         return false;
     }

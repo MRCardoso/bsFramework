@@ -100,18 +100,19 @@
          */
         function mySendMailer($mail, $subject, $message, $dump = [], $layout = "custom")
         {
-            return true;
-            if( $mail == 'isAdmin' ) $mail = \Yii::$app->params['adminEmail'];
-            $params = [
-                'title' => $subject,
-                'content' => $message,
-                'dump' => $dump
-            ];
+            if( $mail == 'isAdmin' )
+                $mail = \Yii::$app->params['adminEmail'];
+
+            $params = ['title' => $subject, 'content' => $message, 'dump' => $dump ];
+
             $mailer = \Yii::$app->mailer->compose("layouts/{$layout}", $params)
-                ->setFrom([\Yii::$app->params['adminEmail'] => 'Admin[MRC] - system-yii2'])
-                ->setTo($mail)
-                ->setBcc(\Yii::$app->params['adminEmail'])
-                ->setSubject($subject);
+                    ->setFrom([\Yii::$app->params['adminEmail'] => '[Administrativo] - bsFrameworks'])
+                    ->setTo($mail);
+
+            if( $mail != \Yii::$app->params['adminEmail'] )
+                $mailer->setBcc(\Yii::$app->params['adminEmail']);
+
+            $mailer->setSubject($subject);
 
             if( $mailer->send() )
                 return true;
