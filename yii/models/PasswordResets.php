@@ -25,7 +25,7 @@ class PasswordResets extends ActiveRecord
     }
     public function saveToken()
     {
-        $this->created_at = date("d-m-Y H:i:s");
+        $this->created_at = date("Y-m-d H:i:s");
 
         if( $this->validate() && $this->save() )
             return true;
