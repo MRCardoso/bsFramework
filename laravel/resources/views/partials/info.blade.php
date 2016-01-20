@@ -1,9 +1,17 @@
-<div class="list-welcome">
-    <div id="child">
-        <a ng-href="./#!/" title="Logomarca" class="image-mrc">
-            <img src="/images/logomarca-mrc4.png" width="50" height="40" alt="image" class="image-logo">
-        </a>
-        <div class="pull-right">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a ng-href="./#!/" class="navbar-brand">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </div>
+        <div class="navbar-right">
             <a ng-href="{{url('/#!/signup')}}" id="signup" class="btn mrc-btn signup">
                 <span id="signup-txt"></span>
                 <span class="glyphicon glyphicon-share"></span>
@@ -14,8 +22,7 @@
             </a>
         </div>
     </div>
-    <div class="clear"></div>
-</div>
+</nav>
 <script type="text/javascript">
     $(document).ready(function ()
     {

@@ -1,4 +1,4 @@
 <p>
-    <strong>Click here to reset your password:</strong>
+    <strong>{{ \Illuminate\Support\Facades\Lang::get('passwords.passwordLink') }}:</strong>
     <a href="{{ url('password/reset/'.$token) }}">{{ url('password/reset/'.$token) }}</a>
 </p>

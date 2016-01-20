@@ -18,6 +18,6 @@
     </div>
     <div ng-if="module.btnAction">
         <a ng-href="./#!/{{module.name}}" class="btn btn-default">Cancelar</a>
-        <button class="btn mrc-btn">Salvar</button>
+        <button class="btn mrc-btn" id="btn-save">Salvar</button>
     </div>
 </div>

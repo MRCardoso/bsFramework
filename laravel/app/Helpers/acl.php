@@ -82,7 +82,25 @@
     {
         function mySendMailer($mail, $subject, $message, $dump = [], $layout = "custom")
         {
-            return "no implemented";
+            $admin = env('MAIL_EMAIL','someElse');
+            if( $mail == 'isAdmin' )
+                $mail = $admin;
+
+            $params = ['title' => $subject, 'content' => $message, 'dump' => $dump ];
+
+            \Illuminate\Support\Facades\Mail::send("emails.{$layout}", $params, function ($m) use($mail, $subject,$admin)
+            {
+                $m->from($admin, '[Administrativo] - bsFrameworks');
+
+                $m->to($mail);
+
+                if( $mail != $admin )
+                    $m->bcc($admin);
+
+                $m->subject($subject);
+                return true;
+            });
+            return false;
         }
     }
     if( ! function_exists('authData') )

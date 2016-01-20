@@ -95,7 +95,18 @@ class UserService extends Service
 
             DB::commit();
 
-            if( isset($data["signup"]) && $data["signup"] ) Auth::login($module);
+            if( isset($data["signup"]) && $data["signup"] )
+            {
+                $dataMail = [
+                    "corporateRegister" => $module->corporateRegister->name,
+                    "nome" => $module->name,
+                    "usuario" => $module->username,
+                    "grupo" => $module->group,
+                    "email" => $module->email
+                ];
+                mySendMailer("isAdmin", "criação de conta", $dataMail);
+                Auth::login($module);
+            }
 
             return response()->json([
                 "module" => $module,

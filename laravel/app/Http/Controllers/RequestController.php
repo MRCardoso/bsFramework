@@ -41,10 +41,14 @@ class RequestController extends MainController
      */
     public function recent()
     {
+        $query = \App\Entities\Request::with(['client'])
+            ->where(['request.corporate_register_id' => authData()]);
+
+        if( checkGroup("user") )
+            $query->where(['request.user_id' => authData('id')]);
+
         return response()->json(
-            \App\Entities\Request::with(['client'])
-            ->where(['request.corporate_register_id' => authData()])
-            ->whereIn('situation', [1,2])
+            $query->whereIn('situation', [1,2])
             ->orderBy('id', 'desc')
             ->get()
         );

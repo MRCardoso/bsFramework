@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Lang;
 
 class PasswordController extends Controller
 {
@@ -20,6 +21,7 @@ class PasswordController extends Controller
 
     use ResetsPasswords;
     protected $redirectTo = './';
+    protected $subject = 'Seu link de recuperação de senha.';
     /**
      * Create a new password controller instance.
      *

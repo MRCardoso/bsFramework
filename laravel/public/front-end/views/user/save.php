@@ -1,5 +1,5 @@
 <div class="{{css_class.save}}" ng-controller="UserController" ng-init="findOne()">
-    <h3 class="text-center" ng-if="iSignup">
+    <h3 class="breadcrumb text-center" ng-if="iSignup">
         Criar sua conta
     </h3>
     <form class="form-horizontal" ng-submit="save()" ng-if="blockPage.status==200">

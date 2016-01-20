@@ -126,6 +126,8 @@ angular.module('main')
          */
         this.save = function( module, router )
         {
+            var $element = angular.element('#btn-save');
+            $element.attr('disabled', true);
             var method = (module.id == undefined ? "$save" : "$update");
             module[method](function (response) {
                 if (router == 'reload')
@@ -143,6 +145,7 @@ angular.module('main')
                 }
                 toastr.success(response.message, standard_msg.SUCCESS);
             }, function (reason) {
+                $element.attr('disabled', false);
                 $this.getMessage(reason);
             });
         };
