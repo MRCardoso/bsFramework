@@ -5,7 +5,7 @@ angular.module('bs.main')
     .config(["$routeProvider", function ($routeProvider) {
         $routeProvider
         .when('/',{
-            templateUrl: 'modules/views/home.html'
+            templateUrl: 'modules/views/home.php'
         })
         .when('/about',{
             templateUrl: 'modules/views/about.html'

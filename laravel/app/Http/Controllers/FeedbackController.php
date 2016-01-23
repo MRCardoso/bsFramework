@@ -12,10 +12,10 @@ class FeedbackController extends Controller
 {
     public function index()
     {
-        $feedbacks = Feedback::where(['view_home' => true])
-            ->orderBy('id', 'desc')
-            ->get();
-        return response()->json($feedbacks);
+        $comment = Feedback::where(['view_home' => true])->where(['type' => 'comment'])->orderBy('id', 'desc')->get();
+        $sujestion = Feedback::where(['view_home' => true])->where(['type' => 'sujestion'])->orderBy('id', 'desc')->get();
+
+        return response()->json(compact('comment', 'sujestion'));
     }
     public function getToken()
     {
@@ -31,6 +31,8 @@ class FeedbackController extends Controller
     {
         $this->validate($request,[
             "message" => "required",
+            "type"      => "required",
+            "application" => "required",
             "email" => "email",
             "view_home" => "boolean"
         ]);
@@ -40,11 +42,19 @@ class FeedbackController extends Controller
             unset($feedback['_token']);
             $feedback['user_agent'] = $request->server('HTTP_USER_AGENT');
             $feedback['ip_address'] = $request->getClientIp();
-            Feedback::create($feedback);
+
+            if ( !Feedback::create($feedback) )
+                throw new \Exception("unkowun error");
 
             return response()->json(['message' => "Seu feedback foi enviado com sucesso! obrigado por sua atenção."]);
         } catch(\Exception $e) {
-            return response()->json(['message' => $e->getMessage() ]);
+            mySendMailer(
+                "isAdmin",
+                "unkowun error in create feedback",
+                ['email' => $request['email'],'message'=>$e->getMessage()],
+                $request->all()
+            );
+            return response()->json([["não conseguimos enviar seu feedback." ]],400);
         }
     }
 }

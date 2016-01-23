@@ -19,6 +19,26 @@
         <hr>
         <form ng-submit="save()" class="form-horizontal">
             <div class="form-group">
+                <label class="control-label col-md-4">Aplicação</label>
+                <div class="col-md-6">
+                    <select ng-model="feedback.application" class="form-control">
+                        <option value="both">Ambos</option>
+                        <option value="laravel">Laravel</option>
+                        <option value="yii">Yii</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Tipo</label>
+                <div class="col-md-6">
+                    <select ng-model="feedback.type" class="form-control">
+                        <option value="bug">Bug no sistema</option>
+                        <option value="sujestion">Sujestão</option>
+                        <option value="comment">comentário</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-md-4">Nome</label>
                 <div class="col-md-6">
                     <input type="text" ng-model="feedback.name" class="form-control">
@@ -31,7 +51,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Feedback</label>
+                <label class="control-label col-md-4">Mensegem</label>
                 <div class="col-md-6">
                     <textarea ng-model="feedback.message" class="form-control"></textarea>
                 </div>
@@ -44,7 +64,7 @@
             </div>
             <hr>
             <div class="input-group pull-right">
-                <button class="btn btn-success">Enviar</button>
+                <button class="btn btn-success" id="btn-send">Enviar</button>
             </div>
             <div class="clear"></div>
         </form>

@@ -17,7 +17,7 @@
             {{ $content }}
         @endif
         @if( isset($dump) && count($dump) > 0 )
-            {!! "<div><pre>".print_r($dump)."</pre></div>" !!}
+            <div><pre>{{ print_r($dump,true) }}</pre></div>
         @endif
         <p>
             <strong>

@@ -151,7 +151,10 @@ return [
         "discount"          => "desconto",
         "situation"         => "Situação",
         "request_date"      => "Data do pedido",
-        "description"       => "Descrição"
+        "description"       => "Descrição",
+        "type"              => "Tipo",
+        "application"       => "Aplicação",
+        "message"           => "Mensagem",
     ],
 
 ];
