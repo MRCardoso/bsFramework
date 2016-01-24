@@ -1,6 +1,3 @@
-/**
- * Created by mrcardoso on 09/01/16.
- */
 angular.module('bs.main')
     .config(["$routeProvider", function ($routeProvider) {
         $routeProvider
@@ -12,9 +9,6 @@ angular.module('bs.main')
         })
         .when('/feedback',{
             templateUrl: 'modules/views/feedback.php'
-        })
-        .when('/laravel',{
-            templateUrl: 'laravel/index.php'
         })
         .otherwise({
         redirectTo: '/'

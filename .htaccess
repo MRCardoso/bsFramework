@@ -1,0 +1,4 @@
+Options -indexes
+ErrorDocument 403 /errors/failRequest.php
+ErrorDocument 404 /errors/failRequest.php
+ErrorDocument 500 /errors/failRequest.php

@@ -90,3 +90,6 @@
     background: #E9EdE9 url('/images/yii.png') no-repeat center;
     background-size: 75%;
 }
+.image-logo{
+    width: 30%;
+}

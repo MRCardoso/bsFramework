@@ -18,7 +18,7 @@
         <script language="JavaScript" src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script language="JavaScript" src="modules/controllers/bs.feedback.js"></script>
         <script language="JavaScript" src="modules/bs.main.js"></script>
-        <script language="JavaScript" src="bs.app.js"></script>
-        <script language="JavaScript" src="bs.routes.js"></script>
+        <script language="JavaScript" src="modules/bs.app.js"></script>
+        <script language="JavaScript" src="modules/bs.routes.js"></script>
     </body>
 </html>
