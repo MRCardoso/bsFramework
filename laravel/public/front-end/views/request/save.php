@@ -182,12 +182,3 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 </div>
-<script language="JavaScript">
-    $(".next-tab").on("click", function(e)
-    {
-        $("")
-        e.preventDefault();
-        var index = $(this).data("id");
-        $("a[href=#lrt-tab"+index+"]").tab("show").parent().addClass("active");
-    });
-</script>

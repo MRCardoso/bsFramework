@@ -8,8 +8,8 @@ angular.module('request',[])
         }
     })
     .controller('RequestController',[
-        '$scope', '$routeParams', '$resource', '$filter', 'main', 'Request',
-        function ($scope, $routeParams, $resource, $filter, main, Request)
+        '$scope', '$routeParams', '$resource', '$filter', 'main', 'Request','$timeout',
+        function ($scope, $routeParams, $resource, $filter, main, Request, $timeout)
         {
             /*
              | -----------------------------------------------------------------
@@ -221,5 +221,8 @@ angular.module('request',[])
                 angular.forEach($scope.tab, function(k,tab){ $scope.tab[tab] = false; });
                 $scope.tab["pass"+index] = true;
             };
+            $timeout(function(){
+                angular.element("#lrt ul").addClass("content");
+            },100);
         }
     ]);
