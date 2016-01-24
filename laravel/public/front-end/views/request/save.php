@@ -5,9 +5,79 @@
             valor total: {{ totalValue | currency }}
         </div>
         <form ng-submit="save()" class="form-horizontal">
-            <tabset justified="true">
-                <tab heading="passo 1">
-                    <br>
+            <tabset justified="true" id="lrt">
+                <tab heading="passo 1" active="tab.pass1">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            Data Pedido:
+                        </label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" ng-model="request.request_date" class="form-control date" mask="39/19/9999">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            Descrição:
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" ng-model="request.description" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            Observação:
+                        </label>
+                        <div class="col-md-6">
+                            <textarea ng-model="request.observation" class="form-control" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="button-group" style="z-index: 1000000">
+                        <a ng-href="./#!/request" class="btn btn-default">Cancelar</a>
+                        <a ng-href role="button" ng-click="runTab(2)" class="btn btn-primary">Próximo</a>
+                    </div>
+                </tab>
+                <tab heading="passo 2" active="tab.pass2">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th>Frete</th>
+                            <th>Desconto</th>
+                            <th>Produto</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" ng-model="request.freight" ng-keyup="calculateValue()" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
+                            </td>
+                            <td>
+                                <input type="text" ng-model="request.discount" ng-keyup="calculateValue()" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
+                            </td>
+                            <td>
+                                <a href role="button" class="btn mrc-btn-light" data-toggle="modal" data-target="#addProduct">
+                                    <span class="glyphicon glyphicon-plus"></span> Adicionar
+                                </a>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="list in request.products" ng-init="productIds.push(+list.pivot.product_id)">
+                            <td colspan="3">
+                                {{ list.pivot.quantity }} - {{ list.name }}, {{ sizeText[list.size].name }}, custo R$ {{ list.pivot.price }}
+                                <div class="pull-right">
+                                    <a ng-href role="button" ng-click="dropProduct($index)" class="remove-link label label-danger">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="button-group" style="z-index: 1000000">
+                        <a ng-href role="button" ng-click="runTab(1)" class="btn btn-default">Anterior</a>
+                        <a ng-href role="button" ng-click="runTab(3)" class="btn btn-primary">Próximo</a>
+                    </div>
+                </tab>
+                <tab heading="adicionais" active="tab.pass3">
                     <div class="form-group">
                         <label class="col-md-3 control-label">
                             Cliente:
@@ -45,76 +115,12 @@
                             </select>
                         </div>
                     </div>
-                </tab>
-                <tab heading="passo 2">
-                    <br>
-                    <div class="">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th>Frete</th>
-                                <th>Desconto</th>
-                                <th>Produto</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" ng-model="request.freight" ng-keyup="calculateValue()" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
-                                </td>
-                                <td>
-                                    <input type="text" ng-model="request.discount" ng-keyup="calculateValue()" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
-                                </td>
-                                <td>
-                                    <a href role="button" class="btn mrc-btn-light" data-toggle="modal" data-target="#addProduct">
-                                        <span class="glyphicon glyphicon-plus"></span> Adicionar
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr ng-repeat="list in request.products" ng-init="productIds.push(+list.pivot.product_id)">
-                                <td colspan="3">
-                                    {{ list.pivot.quantity }} - {{ list.name }}, {{ sizeText[list.size].name }}, custo R$ {{ list.pivot.price }}
-                                    <div class="pull-right">
-                                        <a ng-href role="button" ng-click="dropProduct($index)" class="remove-link label label-danger">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </tab>
-                <tab heading="adicionais">
-                    <br>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">
-                            Data Pedido:
-                        </label>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <input type="text" ng-model="request.request_date" class="form-control date" mask="39/19/9999">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">
-                            Descrição:
-                        </label>
-                        <div class="col-md-6">
-                            <input type="text" ng-model="request.description" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">
-                            Observação:
-                        </label>
-                        <div class="col-md-6">
-                            <textarea ng-model="request.observation" class="form-control" cols="30" rows="3"></textarea>
-                        </div>
+                    <div class="button-group" style="z-index: 1000000">
+                        <a ng-href role="button" ng-click="runTab(2)" class="btn btn-default">Anterior</a>
+                        <button class="btn mrc-btn" id="btn-save">Salvar</button>
                     </div>
                 </tab>
             </tabset>
-            <my-actions module="module"></my-actions>
         </form>
     </div>
     <div class="modal fade" tabindex="-1" role="dialog" id="addProduct">
@@ -176,3 +182,12 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 </div>
+<script language="JavaScript">
+    $(".next-tab").on("click", function(e)
+    {
+        $("")
+        e.preventDefault();
+        var index = $(this).data("id");
+        $("a[href=#lrt-tab"+index+"]").tab("show").parent().addClass("active");
+    });
+</script>

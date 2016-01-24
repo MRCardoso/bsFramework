@@ -17,6 +17,11 @@ angular.module('request',[])
              | -----------------------------------------------------------------
              */
             main.init({moduleName:'request'});
+            $scope.tab = {
+                pass1:true,
+                pass2:false,
+                pass3:false
+            };
 
             $scope.totalValue = 0;
             $scope.messageProduct='';
@@ -205,6 +210,16 @@ angular.module('request',[])
                 this.request.products.splice($index,1);
                 this.productIds.splice($index,1);
                 $scope.calculateValue();
-            }
+            };
+            /*
+             | -----------------------------------------------------------------
+             | run the next and prev tab
+             | -----------------------------------------------------------------
+            */
+            $scope.runTab = function(index)
+            {
+                angular.forEach($scope.tab, function(k,tab){ $scope.tab[tab] = false; });
+                $scope.tab["pass"+index] = true;
+            };
         }
     ]);
