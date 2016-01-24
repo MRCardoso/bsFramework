@@ -33,10 +33,18 @@ class MyButtons extends Widget
         "save" => ["back","save"],
         "view" => ["back","update","delete","create"]
     ];
+    /**
+     * @var int
+     */
+    public $tabIndex;
+    /**
+     * @var
+     */
+    public $buttons = [];
+
     public function init()
     {
         parent::init();
-
         if( $this->model == NULL )
             throw new InvalidConfigException('Please specify the "model" property.');
     }
@@ -63,8 +71,12 @@ class MyButtons extends Widget
 
         if( $this->module == NULL )
             $this->module = explode('/', $options)[0];
-
-        if( preg_match("/(create|update)/", $options) )
+        if( !empty($this->buttons))
+        {
+            foreach($this->buttons as $action)
+                $buttons[] = $this->{$action."Button"}();
+        }
+        elseif( preg_match("/(create|update)/", $options) )
         {
             foreach($this->template["save"] as $action)
                 $buttons[] = $this->{$action."Button"}();
@@ -136,5 +148,31 @@ class MyButtons extends Widget
     private function backButton()
     {
         return Html::a(t('back'),["/{$this->module}"], ['class' => 'btn btn-default']);
+    }
+
+    /**
+     * generate link to next tab
+     *
+     * @return string
+     */
+    private function nextTabButton()
+    {
+        return Html::a(t('next'),'#', [
+            'class' => 'btn btn-primary next-tab',
+            'data-id' => $this->tabIndex+1
+        ]);
+    }
+
+    /**
+     * generate link to prev tab
+     *
+     * @return string
+     */
+    private function prevTabButton()
+    {
+        return Html::a(t('prev'),'', [
+            'class' => 'btn btn-default prev-tab',
+            'data-id' => $this->tabIndex-1
+        ]);
     }
 }

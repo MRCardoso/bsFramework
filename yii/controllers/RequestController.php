@@ -11,7 +11,7 @@ use yii\helpers\Json;
 
 class RequestController extends MyController
 {
-    protected $_freeActions = ["product_data", "product_list", "index"];
+    protected $_freeActions = ["product_request_save","product_data", "product_list", "index"];
     public function __construct($id, $module, $config = [])
     {
         parent::__construct($id, $module, $config);
@@ -27,7 +27,7 @@ class RequestController extends MyController
         return Json::encode([
                 "name" => $product->name,
                 "size" => MyLabels::widget(['model'=>$product,'type'=>'size']),
-                "cost" => $product->cost
+                "cost" => number_format($product->cost,2,',','.')
         ]);
     }
 
@@ -74,5 +74,24 @@ class RequestController extends MyController
             }
         }
         return $this->render('save', [ 'model' => $model, 'params' => $this->_params ]);
+    }
+    /*
+     | -------------------------------------------------------------------------------
+     | Validate modal form of the view request add product
+     | -------------------------------------------------------------------------------
+     */
+    public function actionProduct_request_save()
+    {
+        $model = new ProductRequest();
+        if ( $model->load(\Yii::$app->request->post()) )
+        {
+            return Json::encode([
+                    'content' => $this->renderPartial('partial/list.product.php',[
+                    'model'=> $model
+                ]),
+                'attributes' => $model->attributes
+            ]);
+        }
+        return '';
     }
 }

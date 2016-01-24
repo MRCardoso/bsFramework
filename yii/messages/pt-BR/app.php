@@ -6,10 +6,12 @@
         "Actions"               => "ações",
         "active"                => "ativo",
         "info_additionals"      => "informações adicionais",
+        "add"                   => "adicionar",
         "address"               => "endereço",
         "Already_exists_a_request_of_change_password_for_this_email_{email}." => "Já existe uma solicitação de alteração de senha para este e-mail {email}.",
         // ---------------------B-------------------------------------------------------------
         "back"                  => "voltar",
+        "basic_info"            => "informações básicas",
         "birthday"              => "aniversário",
          // ---------------------C-------------------------------------------------------------
         "cellphone"             => "celular",
@@ -66,6 +68,7 @@
         "name"                  => "Nome",
         "neightborhood"         => "bairro",
         "new"                   => "novo",
+        "next"                  => "próximo",
         "no_informed"           => "não informado",
         "number"                => "número",
         // ---------------------O-------------------------------------------------------------
@@ -73,9 +76,11 @@
         // ---------------------P-------------------------------------------------------------
         "pass_1"                => "passo 1",
         "pass_2"                => "passo 2",
+        "pass_3"                => "passo 3",
         "password"              => "senha",
         "password_confirmation" => "confirmação de senha",
         "phone"                 => "telefone",
+        "prev"                  => "anterior",
         "price"                 => "preço",
         "product"               => "produto",
         "products"              => "produtos",

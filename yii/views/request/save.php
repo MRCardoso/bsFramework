@@ -1,6 +1,6 @@
 <?php
 use yii\widgets\ActiveForm;
-$contents ='';
+$contents = [];
 $productIds=[];
 $productList=[];
 $template = ['template'=>'{label}{input}<span class=\"col-md-8 text-right\">{error}</span>'];
@@ -9,17 +9,7 @@ foreach( $model->productRequests as $i => $productRequest)
 {
     $productIds[] = $productRequest->product->id;
     $productList[] = ["price"=>$productRequest->price, "quantity"=>$productRequest->quantity];
-    $contents .= "<div class=\"list-group-item\" id=\"list-{$productRequest->product->id}\">
-        {$productRequest->quantity}  - {$productRequest->product->name}, Custo R$ {$productRequest->price}
-        <div class=\"pull-right\">
-            <a href=\"#\" data-id=\"{$productRequest->product->id}\" class=\"dropProduct remove-link label label-danger\">
-                <span class=\"glyphicon glyphicon-remove\"></span>
-            </a>
-        </div>
-        <input type=\"hidden\" name=\"products[{$productRequest->product->id}][product_id]\" value=\"{$productRequest->product->id}\">
-        <input type=\"hidden\" name=\"products[{$productRequest->product->id}][quantity]\" value=\"{$productRequest->quantity}\">
-        <input type=\"hidden\" name=\"products[{$productRequest->product->id}][price]\" value=\"{$productRequest->price}\">
-    </div>";
+    $contents[] = Yii::$app->controller->renderPartial('partial/list.product.php',['model' => $productRequest]);
 }
 ?>
 <div class="border-side-bottom content content-large">
@@ -34,9 +24,12 @@ foreach( $model->productRequests as $i => $productRequest)
                 [
                     'label' => t('pass 1'),
                     'content' => join('', [
-                        $form->field($model, 'deliveryman_id')->dropDownList($model->arrayListModel(\app\models\Deliveryman::class),['prompt'=>t('select')]),
-                        $form->field($model, 'client_id')->dropDownList($model->arrayListModel(\app\models\Client::class),['prompt'=>t('select')]),
-                        $form->field($model, 'situation')->dropDownList(dropDownList('situation'), ['prompt' => t('select')]),
+                        $form->field($model, 'request_date')
+                            ->widget(\yii\widgets\MaskedInput::className(), ['mask' => '99/99/9999'])
+                            ->widget(\dosamigos\datepicker\DatePicker::className(), viewOption(['model'=>$model,'attribute' => 'request_date'],"datepicker")),
+                        $form->field($model, 'description')->textInput(['maxlength' => true]),
+                        $form->field($model, 'observation')->textarea(),
+                        \app\widgets\MyButtons::widget(['model'=>$model,'buttons'=>['back','nextTab']])
                     ]),
                     'active' => true
                 ],
@@ -52,7 +45,7 @@ foreach( $model->productRequests as $i => $productRequest)
                             '</div>',
                             '<div class="col-md-2">',
                                 '<label class="control-label">Produto</label>',
-                                \yii\helpers\Html::a('<span class="glyphicon glyphicon-plus"></span> Adicionar','#',[
+                                \yii\helpers\Html::a('<span class="glyphicon glyphicon-plus"></span>'.t('add'),'#',[
                                     'class'=>'btn mrc-btn-light',
                                     'data-toggle' => 'modal',
                                     'data-target' => '#addProduct',
@@ -60,25 +53,25 @@ foreach( $model->productRequests as $i => $productRequest)
                                 ]),
                             '</div>',
                             '<div class="clear"></div>',
-                            '<div class="list-group" id="list-group">'.$contents.'</div>',
+                            '<div class="list-group" id="list-group">'.join('',$contents).'</div>',
                             '<div id="product-list"></div>',
                         '</div>',
+                        \app\widgets\MyButtons::widget(['model'=>$model, 'tabIndex' => 1, 'buttons'=>['prevTab','nextTab']])
                     ])
                 ],
                 [
-                    'label' => t('info_additionals'),
+                    'label' => t('pass 3'),
                     'content' => join('', [
-                        $form->field($model, 'request_date')
-                            ->widget(\yii\widgets\MaskedInput::className(), ['mask' => '99/99/9999'])
-                            ->widget(\dosamigos\datepicker\DatePicker::className(), viewOption(['model'=>$model,'attribute' => 'request_date'],"datepicker")),
-                        $form->field($model, 'description')->textInput(['maxlength' => true]),
-                        $form->field($model, 'observation')->textarea(),
+                        $form->field($model, 'deliveryman_id')->dropDownList($model->arrayListModel(\app\models\Deliveryman::class),['prompt'=>t('select')]),
+                        $form->field($model, 'client_id')->dropDownList($model->arrayListModel(\app\models\Client::class),['prompt'=>t('select')]),
+                        $form->field($model, 'situation')->dropDownList(dropDownList('situation'), ['prompt' => t('select')]),
+                        \app\widgets\MyButtons::widget(['model'=>$model,'buttons'=>['prevTab','save'],'tabIndex'=>2])
                     ])
                 ]
             ],
-            'navType' => 'nav nav-justified nav-tabs content'
+            'navType' => 'nav nav-justified nav-tabs content',
+            'options' =>['id'=>'lrt']
         ]);
-        echo \app\widgets\MyButtons::widget(['model' => $model]);
     ActiveForm::end();
 echo '</div>';
 ?>
@@ -90,83 +83,59 @@ echo '</div>';
                     <h4 class="modal-title">Produto</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-horizontal">
-                        <div class="alert alert-warning alert-dismissible display-none" role="alert" id="req-message">
-                            <strong>Atenção!</strong>
-                            <span id="msg-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">
-                                <?php echo t('product'); ?>
-                            </label>
-                            <div class="col-md-6">
-                                <select id="product_id" class="form-control product_requests">
-                                    <option value=""><?php echo t('select');?></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">
-                                <?php echo t('quantity'); ?>
-                            </label>
-                            <div class="col-md-6">
-                                <input type="text" name="quantity" id="quantity" class="form-control product_requests">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">
-                                <?php echo t('price'); ?>
-                            </label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="glyphicon glyphicon-usd"></span>
-                                    </div>
-                                    <?php
-                                    echo \kartik\money\MaskMoney::widget([
-                                        "name" => 'price',
-                                        "options" => ['id' => 'price', 'class' => 'product_requests'],
-                                        "pluginOptions" => Yii::$app->params["maskMoneyOptions"]["pluginOptions"]
-                                    ]);
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btn-add-product" class="btn mrc-btn">Adicionar</button>
-                    </div>
+                    <?php echo Yii::$app->controller->renderPartial('partial/add.product.php',[]); ?>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 <?php
 $this->registerJs('
-$(document).ready(function(){
+$(document).ready(function()
+{
     var productData = {};
     var productList = '.\yii\helpers\Json::encode((!empty($productList)?$productList:[])).';
     var productIds = '.\yii\helpers\Json::encode((!empty($productIds)?$productIds:[])).';
+
     $("form").on("submit", function(e)
     {
         $("input").trigger("blur");
     });
 
+    $(".next-tab").on("click", function(e)
+    {
+        e.preventDefault();
+        var index = $(this).data("id");
+        $("a[href=#lrt-tab"+index+"]").tab("show").parent().addClass("active");
+    });
+
+    $(".prev-tab").on("click", function(e)
+    {
+        e.preventDefault();
+        var index = $(this).data("id");
+        $("a[href=#lrt-tab"+index+"]").tab("show").parent().addClass("active");
+    });
+
     $("#open-product").on("click", function(){
         $.ajax({
-                url: "'.\Yii::$app->urlManager->createUrl(["request/product_list"]).'",
-                method: "post",
-                dataType: "json",
-                data: { product_id: productIds },
-                success: function(data)
-                {
-                    $("#product_id").html(\'<option value="">'.t('select').'</option>\');
-                    $.each(data, function(k,row){
-                        $("#product_id").append(\'<option value="\'+k+\'">\'+row+\'</option>\');
-                    });
-                }
-            });
+            url: "'.\Yii::$app->urlManager->createUrl(["request/product_list"]).'",
+            method: "post",
+            dataType: "json",
+            data: { product_id: productIds },
+            success: function(data)
+            {
+                $("#productrequest-product_id").html(\'<option value>'.t('select').'</option>\');
+                $.each(data, function(k,row){
+                    $("#productrequest-product_id").append(\'<option value="\'+k+\'">\'+row+\'</option>\');
+                });
+            }
+        });
     });
-    $("#product_id").on("change", function()
+    /*
+    | -----------------------------------------------------------
+    | change product
+    | -----------------------------------------------------------
+    */
+    $("#productrequest-product_id").on("change", function()
     {
         if(this.value != "" )
         {
@@ -178,53 +147,51 @@ $(document).ready(function(){
                 success: function(data)
                 {
                     productData = data;
-                    $("#price-disp").val(data.cost).trigger("keyup");
+                    $("#productrequest-price-disp").val(data.cost).trigger("keyup");
                 }
             });
         }
     });
+    /*
+    | -----------------------------------------------------------
+    | submit modal of the products
+    | -----------------------------------------------------------
+    */
+    $("#submit-product").on("beforeSubmit", function()
+    {
+        $("input").trigger("blur");
+        var $form = $(this);
+        $.post(
+            $form.attr("action"),
+            $form.serialize(),
+            function(reason)
+            {
+                productIds.push(reason.attributes.product_id);
+                productList.push({"price":reason.attributes.price, "quantity":reason.attributes.quantity});
 
-    $("#btn-add-product").on("click", function(e){
-        e.preventDefault();
-        var product_id = $("#product_id").val();
-        var quantity = $("#quantity").val();
-        var price = $("#price-disp").val();
-
-        if(product_id == "")
-        {
-            $("#req-message").show();
-            $("#msg-danger").text("você preciso selecionar um produto!");
-        }
-        else if( !(/^[0-9]{1,}$/.test(quantity)) )
-        {
-            $("#req-message").show();
-            $("#msg-danger").text("A  quantidade de conter um número inteiro!");
-        }
-        else if( !(/^\d*(\.\d{0,3})?(\.\d{0,3})?(\,\d{2})?$/.test(price)) )
-        {
-            $("#req-message").show();
-            $("#msg-danger").text("O preço deve conter um valor numérico!");
-        }
-        else
-        {
-            $("#req-message").hide();
-            productIds.push(product_id);
-            productList.push({"price":price, "quantity":quantity});
-            var $inputs = \'<input type="hidden" name="products[\'+product_id+\'][product_id]" value="\'+product_id+\'"><input type="hidden" name="products[\'+product_id+\'][quantity]" value="\'+quantity+\'"><input type="hidden" name="products[\'+product_id+\'][price]" value="\'+price+\'">\';
-            var dropLabel = \'<div class="pull-right"><a ng-href="#" data-id="\'+product_id+\'" class="dropProduct remove-link label label-danger"><span class="glyphicon glyphicon-remove"></span></a></div>\';
-            var $content = $("<div/>",{html: quantity+" - "+productData.name+", Custo R$ "+price+dropLabel+$inputs,"class": "list-group-item","id": "list-"+product_id});
-1
-            calculateSum($("#request-freight-disp").val(), $("#request-discount-disp").val());
-            $("#list-group").append($content);
-            $(".product_requests").val("");
-            $("#addProduct").modal("hide");
-        }
+                calculateSum($("#request-freight-disp").val(), $("#request-discount-disp").val());
+                $("#list-group").append(reason.content);
+                $("#addProduct").modal("hide");
+                document.getElementById("submit-product").reset();
+            },
+            "json"
+        );
+        return false;
     });
-    $(document).on("click", ".dropProduct", function(){
+    /*
+     | -----------------------------------------------------------
+     | Drop a product
+     | -----------------------------------------------------------
+     */
+    $(document).on("click", ".dropProduct", function()
+    {
         var id = $(this).data("id");
-        productIds.splice(productIds.indexOf(id),1);
-        productList.splice(productIds.indexOf(id),1);
-        $("#request-freight-disp").trigger("keyup");
+        var index = productIds.indexOf(id);
+
+        productIds.splice(index,1);
+        productList.splice(index,1);
+
+        calculateSum($("#request-freight-disp").val(), $("#request-discount-disp").val());
         $("#list-"+id).remove();
     });
     $("#request-description").on("keyup", function()

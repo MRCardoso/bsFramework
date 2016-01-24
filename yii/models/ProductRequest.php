@@ -48,10 +48,10 @@ class ProductRequest extends MyModel
     public function attributeLabels()
     {
         return [
-            'product_id' => 'Product ID',
-            'request_id' => 'Request ID',
-            'quantity' => 'Quantity',
-            'price' => 'Price',
+            'product_id' => t('Product'),
+            'request_id' => t('Request ID'),
+            'quantity' => t('Quantity'),
+            'price' => t('Price'),
         ];
     }
 
