@@ -12,6 +12,7 @@ $config = [
     'components' => [
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
+            'defaultTimeZone' => 'America/Sao_Paulo',
             'thousandSeparator' => '.',
             'decimalSeparator' => ',',
             'currencyCode' => 'R$',
