@@ -1,7 +1,4 @@
-<?php
-ini_set('display_errors',1);
-require('messages.php');
-?>
+<?php require('messages.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
