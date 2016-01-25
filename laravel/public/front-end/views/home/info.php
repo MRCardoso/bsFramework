@@ -39,26 +39,15 @@
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        $("#signup").on('mouseenter', function ()
+        var size = Math.round(window.innerWidth/9);
+        var styless = { width: size+'px', height: size+'px' };
+        $('.box').css(styless);
+
+        $(window).resize(function ()
         {
-            $(this).children('span[id=signup-txt]').text("Criar conta");
-        }).on('mouseleave', function () {
-            $(this).children('span[id=signup-txt]').text("");
-        });
-        $("#signin").on('mouseenter', function ()
-        {
-            $(this).children('span[id=signin-txt]').text("Acessar");
-        }).on('mouseleave', function () {
-            $(this).children('span[id=signin-txt]').text("");
-        });
-    });
-    $(document).ready(function ()
-    {
-        $(".box").on('mouseenter', function ()
-        {
-            $(this).animate({"box-shadow": "inset 0 0 200px #333333"});
-        }).on('mouseleave', function () {
-            $(this).animate({"box-shadow": "inset 0 0 10px #333333"});
+            var size = Math.round(window.innerWidth/9);
+            var styless = { width: size+'px', height: size+'px' };
+            $('.box').css(styless);
         });
     });
 </script>

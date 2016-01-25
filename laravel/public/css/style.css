@@ -2,22 +2,30 @@ html,
 body {
     height: 100%;
 }
+.loading{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #DFDFDF url("../images/loadingmrc.gif") center no-repeat;
+    opacity: 0.6;
+    background-size: 12%;
+}
 .wrap {
-    /*z-index: 30 !important;*/
-    /*position: relative;*/
     min-height: 100%;
-    height: auto;
-    margin: 0 auto -20px;
-    padding: 0 0 60px;
+    margin: 0 auto -45px;
+}
+.content-scroll{
+    height: 594px;
+    overflow: auto;
 }
 .footer {
-    height: 40px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     width: 100%;
-    padding-top: 5px;
+    padding: 5px 0;
 }
 .content{
+    position: relative;
     padding: 1.5%;
     border: 1px solid #E6DAFF;
     background: #FAFAFA;
@@ -141,8 +149,6 @@ body {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    width: 220px;
-    height: 220px;
     -webkit-box-shadow: inset 0 0 200px #333333;
     -moz-box-shadow: inset 0 0 200px #333333;
     box-shadow: inset 0 0 200px #333333;
@@ -198,4 +204,50 @@ body {
 }
 .select2{
     width: 100%;
+}
+.table {
+    table-layout: fixed;
+}
+.table{
+    word-wrap: break-word;
+}
+.remove-link{
+    text-decoration: none;
+}
+@media screen and (max-width: 650px)
+{
+    .content-scroll{
+        height: 500px;
+        overflow: auto;
+    }
+    .table-responsive {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+
+    .table-responsive thead,
+    .table-responsive tbody,
+    .table-responsive th,
+    .table-responsive td,
+    .table-responsive tr {
+        display: block;
+    }
+    .table-responsive td,
+    .table-responsive th {
+        height: 35px;
+    }
+    .table-responsive thead {
+        float: left;
+    }
+    .table-responsive tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+    .table-responsive tbody tr {
+        display : inline-block;
+    }
 }

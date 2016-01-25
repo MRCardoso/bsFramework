@@ -56,8 +56,10 @@
                                 <input type="text" ng-model="request.discount" ng-keyup="calculateValue()" class="form-control" mask="9?9?9?9?9?9?9?9?9,99">
                             </td>
                             <td>
-                                <a href role="button" class="btn mrc-btn-light" data-toggle="modal" data-target="#addProduct">
-                                    <span class="glyphicon glyphicon-plus"></span> Adicionar
+                                <a ng-href role="button" class="btn mrc-btn-light" data-toggle="modal" data-target="#addProduct"
+                                   tooltip="Adicionar produto"
+                                   tooltip-placement="top" tooltip-trigger="mouseenter">
+                                    <span class="glyphicon glyphicon-plus"></span>
                                 </a>
                             </td>
                         </tr>

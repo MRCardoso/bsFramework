@@ -8,7 +8,7 @@ angular
                     moduleName: '',
                     messageDrop: [],
                     authenticate: true,
-                    limit: 8,
+                    limit: 7,
                     datePickerDefault: {
                         language: 'pt-BR',
                         format: "dd/mm/yyyy",
@@ -18,7 +18,8 @@ angular
                 },
                 css_class = {
                     "table": "table table-striped table-bordered table-hover",
-                    "save": "border-side-bottom content content-large"
+                    "save": "border-side-bottom content content-large",
+                    "responsive": "table-responsive"
                 },
                 text_integer = $rootScope.labels,
                 main = {
@@ -77,9 +78,17 @@ angular
                         $timeout(function ()
                         {
                             $rootScope.totalItems = paginationService.getCollectionLength(instanceId);
-                        }, 500);
+                            $rootScope.loading = false;
+                        }, 800);
                     }
                 };
+                $rootScope.$on('$routeChangeStart', function(scope, next, current){
+                    $rootScope.loading = true;
+                });
+                $rootScope.$on('$routeChangeSuccess', function(scope, next, current)
+                {
+                    $rootScope.loading = false;
+                });
                 $rootScope.listen();
                 $rootScope.changePage = function(p) {
                     $rootScope.currentPage = p;

@@ -1,5 +1,5 @@
 <div ng-controller="RequestController" ng-init="find()">
-    <table class="{{ css_class.table }}">
+    <table class="{{ css_class.table }} {{ css_class.responsive }}">
         <thead>
             <tr>
                 <th>Entregador</th>
@@ -9,7 +9,7 @@
                 <th>Valor Total</th>
                 <th>Data do pedido</th>
                 <th>Situação</th>
-                <th width="8%">Ações</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>

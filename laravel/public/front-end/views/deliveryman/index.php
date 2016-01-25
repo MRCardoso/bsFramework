@@ -1,5 +1,5 @@
 <div ng-controller="DeliverymanController" ng-init="find()">
-    <table class="table table-bordered table-hover">
+    <table class="{{ css_class.table }} {{ css_class.responsive }}">
         <thead>
             <tr>
                 <th>Empresa</th>
@@ -8,7 +8,7 @@
                 <th>RG</th>
                 <th>Celular</th>
                 <th>Status</th>
-                <th width="8%">Ações</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>

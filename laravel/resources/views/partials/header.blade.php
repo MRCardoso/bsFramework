@@ -5,12 +5,13 @@
             loading...
         </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ myUrl('/favicon.png') }}" rel="shortcut icon" type="image/x-icon" />
         <link rel="stylesheet" href="{{ myUrl('/lib/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ myUrl('/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css') }}">
         <link rel="stylesheet" href="{{ myUrl('/lib/angular-toastr/dist/angular-toastr.css') }}">
         <link rel="stylesheet" href="{{ myUrl('/lib/select2/select2.css') }}">
-        <link rel="stylesheet" href="{{ myUrl('/css/style.css') }}">
+        <link rel="stylesheet" href="{{ myUrl('/css/style.css') }}" media="screen">
         <!--Dependence of third-->
         <script language="JavaScript" src="{{ myUrl('/lib/jquery/dist/jquery.js') }}"></script>
         <script language="JavaScript" src="{{ myUrl('/lib/angular/angular.js') }}"></script>

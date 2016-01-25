@@ -1,5 +1,5 @@
 <div ng-controller="ProductController" ng-init="find()">
-    <table class="{{ css_class.table }}">
+    <table class="{{ css_class.table }} {{ css_class.responsive }}">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -7,7 +7,7 @@
                 <th>Preço</th>
                 <th>Tamanho</th>
                 <th>Status</th>
-                <th width="8%">Ações</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>

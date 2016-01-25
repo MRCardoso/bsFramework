@@ -1,5 +1,5 @@
 <div ng-controller="UserController" ng-init="find()">
-    <table class="{{ css_class.table }}">
+    <table class="{{ css_class.table }} {{ css_class.responsive }}">
         <thead>
         <tr>
             <th ng-if="auth.group=='admin'">Corporação</th>
@@ -8,7 +8,7 @@
             <th>Grupo</th>
             <th>usuário</th>
             <th>status</th>
-            <th width="8%">Ações</th>
+            <th>Ações</th>
         </tr>
         </thead>
         <tbody>
