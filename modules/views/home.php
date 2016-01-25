@@ -16,7 +16,15 @@
             </li>
         </ul>
     </div>
-    <div class="alert alert-warning">
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p>
+            Melhorias foram adicionadas no layout do sistema, tornando mais agradável
+            a experiência do usuário no acesso ao sistema em dispositivos mobile.
+        </p>
+    </div>
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <p>
             Recomendo, caso surja dúvida, acesso o menu '<a ng-href="/#!/about">sobre</a> ',
             pois nele há uma breve descrição da estrutura base deste sistema.
