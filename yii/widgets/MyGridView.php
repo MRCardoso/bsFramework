@@ -12,6 +12,7 @@ class MyGridView extends GridView
     public $withoutActions = false;
     public $contentGrid = '';
     public $enabledStatus = true;
+    public $tableOptions = ['class' => 'table table-striped table-bordered table-hover table-responsive'];
 
     public function init()
     {
@@ -47,7 +48,6 @@ class MyGridView extends GridView
         return array_merge([
             'class' => ActionColumn::class,
             'header'=> t('Actions'),
-            'contentOptions' => ['width' => '9%'],
             'buttons'=> [
                 'update' => function($url, $model)
                 {

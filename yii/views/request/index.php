@@ -37,6 +37,3 @@
         ],
     ]);
     \yii\widgets\Pjax::end();
-    $this->registerJs(
-        '$("table th").css({width:"12%"});'
-    );
