@@ -104,7 +104,12 @@ angular
                 */
                 $(business.element).addClass('active');
                 $(".template-head")[($rootScope.save?'hide':'show')]();
-                $timeout(function () {
+
+                if( $('#bs-laravel-menu').hasClass('in') )
+                    $(".navbar-toggle").trigger("click");
+
+                $timeout(function ()
+                {
                     $(".date").datepicker(datepickerOpt);
                 },100);
             }

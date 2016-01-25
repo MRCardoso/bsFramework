@@ -171,6 +171,8 @@
     border-radius: 5px;
 }
 .list-libraries{
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 .list-libraries li{
@@ -182,8 +184,6 @@
 }
 .table {
     table-layout: fixed;
-}
-.table{
     word-wrap: break-word;
 }
 .remove-link{
@@ -191,6 +191,13 @@
 }
 @media screen and (max-width: 650px)
 {
+    .box{
+        width: 80px;
+        height: 80px;
+    }
+    .center-list, .content-large{
+        width: 100%;
+    }
     .content-scroll{
         height: 500px;
         overflow: auto;

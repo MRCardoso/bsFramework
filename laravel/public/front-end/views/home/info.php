@@ -36,18 +36,3 @@
         Veja o código fonte no GitHub
     </a>
 </div>
-<script type="text/javascript">
-    $(document).ready(function ()
-    {
-        var size = Math.round(window.innerWidth/9);
-        var styless = { width: size+'px', height: size+'px' };
-        $('.box').css(styless);
-
-        $(window).resize(function ()
-        {
-            var size = Math.round(window.innerWidth/9);
-            var styless = { width: size+'px', height: size+'px' };
-            $('.box').css(styless);
-        });
-    });
-</script>

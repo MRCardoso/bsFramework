@@ -6,7 +6,7 @@
         </div>
         <form ng-submit="save()" class="form-horizontal">
             <tabset justified="true" id="lrt">
-                <tab heading="passo 1" active="tab.pass1">
+                <tab heading="Passo 1" active="tab.pass1">
                     <div class="form-group">
                         <label class="col-md-3 control-label">
                             Data Pedido:
@@ -41,7 +41,7 @@
                         <a ng-href role="button" ng-click="runTab(2)" class="btn btn-primary">Próximo</a>
                     </div>
                 </tab>
-                <tab heading="passo 2" active="tab.pass2">
+                <tab heading="Passo 2" active="tab.pass2">
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th>Frete</th>
@@ -79,7 +79,7 @@
                         <a ng-href role="button" ng-click="runTab(3)" class="btn btn-primary">Próximo</a>
                     </div>
                 </tab>
-                <tab heading="adicionais" active="tab.pass3">
+                <tab heading="Passo 3" active="tab.pass3">
                     <div class="form-group">
                         <label class="col-md-3 control-label">
                             Cliente:

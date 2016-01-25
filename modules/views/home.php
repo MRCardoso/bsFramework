@@ -74,17 +74,4 @@
             </section>
         </div>
     </div>
-    <script language="JavaScript">
-        $(document).ready(function(){
-            var size = Math.round(window.innerWidth/10);
-            var styless = { width: size+'px', height: size+'px' };
-            $('.box').css(styless);
-            $(window).resize(function ()
-            {
-                var size = Math.round(window.innerWidth/10);
-                var styless = { width: size+'px', height: size+'px' };
-                $('.box').css(styless);
-            })
-        })
-    </script>
 </div>

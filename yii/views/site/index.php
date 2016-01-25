@@ -5,7 +5,7 @@
         'layout' => '{items}{pager}',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class' => 'table  table-bordered table-hover'],
+        'tableOptions' => ['class' => 'table table-condensed table-bordered table-hover'],
         'columns' => [
             [
                 'attribute' => 'filter',

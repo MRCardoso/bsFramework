@@ -63,18 +63,19 @@
 <div class="footer" ng-show="!loading">
     <div class="container">
         <div class="pull-right">
-            <a href="/" style="text-decoration: none" tooltip="Volte a raiz do sistema"
-               tooltip-placement="top" tooltip-trigger="mouseenter">
-                {!!
-                    Html::image('public/images/logomarca-mrc4.png','',['class'=> 'image-logo'])
-                !!}
-            </a>
             <a href="/yii/" style="text-decoration: none" tooltip="acesso este sistema pelo Yii"
                tooltip-placement="top" tooltip-trigger="mouseenter">
                 {!!
                     Html::image('public/images/yii.png','',['class'=> 'image-logo'])
                 !!}
             </a>
+            <a href="/" style="text-decoration: none" tooltip="Volte a raiz do sistema"
+               tooltip-placement="top" tooltip-trigger="mouseenter">
+                {!!
+                    Html::image('public/images/logomarca-mrc4.png','',['class'=> 'image-logo'])
+                !!}
+            </a>
+
         </div>
         <div class="text-center">
             <?php echo  "<strong>&copy; MRC - ".date('Y')." @developed with Laravel Artisan on your version ".$app->version()."</strong>"; ?>
