@@ -232,8 +232,11 @@ body {
         width: 90px;
         height: 90px;
     }
-    .center-list, .content-large, .content-medium{
-        width: 98%;
+    .center-list,
+    .content-large,
+    .content-medium,
+    .content-small{
+        width: 93%;
     }
     .table-responsive {
         display: block;
