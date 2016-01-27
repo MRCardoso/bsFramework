@@ -57,13 +57,13 @@ $this->params['breadcrumbs'] = makeBreadcrumb(Yii::$app->request->pathInfo);
         <div class="pull-right">
             <?php
             echo Html::a(join('', [
-                "<span id=\"signup-txt\"></span>\n",
-                "<span class=\"glyphicon glyphicon-share\"></span>\n"
+                t("create account"),
+                "\n<span class=\"glyphicon glyphicon-share\"></span>"
             ]),['/signup'], ['class' => 'btn mrc-btn signup', 'id' => 'signup']);
 
             echo Html::a(join('', [
-                "<span id=\"signin-txt\"></span>\n",
-                '<span class="glyphicon glyphicon-log-in"></span>'
+                "<span class=\"glyphicon glyphicon-log-in\"></span>\n",
+                t("access")
             ]),['/signin'], ['class' => 'btn mrc-btn signin', 'id' => 'signin']);
             ?>
         </div>

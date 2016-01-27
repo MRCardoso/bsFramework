@@ -1,4 +1,4 @@
-<div class="{{css_class.save}}" ng-controller="UserController" ng-init="findOne()">
+<div class="content content-large" ng-controller="UserController" ng-init="findOne()">
     <h3 class="breadcrumb text-center" ng-if="iSignup">
         Criar sua conta
     </h3>

@@ -51,17 +51,19 @@ class AuthController extends Controller
     }
     public function redirectPath()
     {
-        $loadUser = authData('');
-
-        $dataMail = [
-            "Framework" => "Laravel",
-            "nome" => $loadUser->name,
-            "usuario" => $loadUser->username,
-            "grupo" => $loadUser->group,
-            "email"=>$loadUser->email,
-            "data" => date('d/m/Y H:i:s')
-        ];
-        mySendMailer("isAdmin", "usuário efetuou login", $dataMail);
+        if ( !checkGroup('admin') )
+        {
+            $loadUser = authData('');
+            $dataMail = [
+                "Framework" => "Laravel",
+                "nome" => $loadUser->name,
+                "usuario" => $loadUser->username,
+                "grupo" => $loadUser->group,
+                "email"=>$loadUser->email,
+                "data" => date('d/m/Y H:i:s')
+            ];
+            mySendMailer("isAdmin", "usuário efetuou login", $dataMail);
+        }
 
         return $this->redirectPath;
     }

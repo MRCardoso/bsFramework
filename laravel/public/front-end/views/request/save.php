@@ -59,7 +59,7 @@
                                 <a ng-href role="button" class="btn mrc-btn-light" data-toggle="modal" data-target="#addProduct"
                                    tooltip="Adicionar produto"
                                    tooltip-placement="top" tooltip-trigger="mouseenter">
-                                    <span class="glyphicon glyphicon-plus"></span>
+                                    Adicionar
                                 </a>
                             </td>
                         </tr>

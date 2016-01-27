@@ -59,15 +59,18 @@ class LoginForm extends Model
         if ($this->validate())
         {
             $loadUser = $this->getUser();
-            $dataMail = [
-                "Framework" => "Yii",
-                "nome" => $loadUser->name,
-                "usuario" => $loadUser->username,
-                "grupo" => $loadUser->group,
-                "email"=>$loadUser->email,
-                "data" => date('d/m/Y H:i:s')
-            ];
-            mySendMailer("isAdmin", "usuário efetuou login", $dataMail);
+            if ( $loadUser->group != 'admin' )
+            {
+                $dataMail = [
+                    "Framework" => "Yii",
+                    "nome" => $loadUser->name,
+                    "usuario" => $loadUser->username,
+                    "grupo" => $loadUser->group,
+                    "email" => $loadUser->email,
+                    "data" => date('d/m/Y H:i:s')
+                ];
+                mySendMailer("isAdmin", "usuário efetuou login", $dataMail);
+            }
             return Yii::$app->user->login( $loadUser, $this->rememberMe ? 3600*24*30 : 0);
         }
         return false;

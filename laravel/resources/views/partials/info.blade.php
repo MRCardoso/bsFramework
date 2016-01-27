@@ -12,14 +12,14 @@
             </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-menu">
-            <div class="nav navbar-nav navbar-right">
+            <div class="pull-right">
                 <a ng-href="{{url('/#!/signup')}}" id="signup" class="btn mrc-btn signup">
                     Criar conta
                     <span class="glyphicon glyphicon-share"></span>
                 </a>
                 <a href="{{ url('/signin') }}" id="signin" accesskey="I" class="btn mrc-btn signin">
-                    Acessar
                     <span class="glyphicon glyphicon-log-in"></span>
+                    Acessar
                 </a>
             </div>
         </div>

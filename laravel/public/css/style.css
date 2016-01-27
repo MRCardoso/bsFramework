@@ -218,18 +218,22 @@ body {
 .remove-link{
     text-decoration: none;
 }
+@media screen and (max-height: 650px)
+{
+    .content-scroll{
+        height: 570px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
 @media screen and (max-width: 650px)
 {
     .box{
         width: 90px;
         height: 90px;
     }
-    .center-list, .content-large{
-        width: 100%;
-    }
-    .content-scroll{
-        height: 500px;
-        overflow: auto;
+    .center-list, .content-large, .content-medium{
+        width: 98%;
     }
     .table-responsive {
         display: block;

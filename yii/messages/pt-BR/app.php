@@ -3,6 +3,7 @@
     $rs = [
         // ---------------------A-------------------------------------------------------------
         "about_request"         => "sobre o pedido",
+        "access"                => "acessar",
         "Actions"               => "ações",
         "active"                => "ativo",
         "info_additionals"      => "informações adicionais",
@@ -32,6 +33,7 @@
         "corporation"           => "Corporação",
         "cost"                  => "custo",
         "create"                => "criado",
+        "create_account"        => "Criar conta",
         'created_at'            => "Criação",
         // ---------------------D-------------------------------------------------------------
         "delete"                => "remover",
