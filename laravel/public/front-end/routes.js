@@ -10,6 +10,9 @@ angular.module('main')
         .when('/info',{
             templateUrl: base+'views/home/info.php'
         })
+        .when('/feedback',{
+            templateUrl: base+'views/home/feedback.php'
+        })
         .when('/user',{
             templateUrl: base+'views/user/index.php'
         })

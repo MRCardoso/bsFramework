@@ -8,7 +8,7 @@
                 <div ng-include="'header.php' | myUrl"></div>
                 <!--load the page error-->
                 <div ng-include="'error.php' | myUrl"></div>
-                <div class="template-head display-none" ng-hide="save">
+                <div class="template-head display-none" ng-hide="save" ng-show="blockPage.status==200">
                     <div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn">

@@ -3,24 +3,25 @@ var labels = {};
 var user = {initPath:'info'};
 var mainApp = 'adsWork';
 var mainAppModule = angular.module(mainApp,[
-        // modules of third
-        "ngResource",
-        "ngRoute",
-        "toastr",
-        "ui.bootstrap",
-        "angularUtils.directives.dirPagination",
-        "ngMask",
-        "ui.select2",
-        // modules of the application
-        "main",
-        "home",
-        "client",
-        "company",
-        "deliveryman",
-        "product",
-        "request",
-        "user"
-    ]);
+    // modules of third
+    "ngResource",
+    "ngRoute",
+    "toastr",
+    "ui.bootstrap",
+    "angularUtils.directives.dirPagination",
+    "ngMask",
+    "ui.select2",
+    // modules of the application
+    "main",
+    "home",
+    "client",
+    "company",
+    "deliveryman",
+    "product",
+    "request",
+    "user",
+    "feedback"
+]);
 mainAppModule.config(["$locationProvider","toastrConfig", function($locationProvider,toastrConfig){
         angular.extend(toastrConfig, {
             allowHtml: true,

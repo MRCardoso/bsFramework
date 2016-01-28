@@ -175,8 +175,9 @@ Route::group(['prefix' => 'password'], function(){
  | Feedback
  | --------------------------------------
  */
+Route::get('feed', 'FeedbackController@index');
 Route::group(['prefix' => 'feedback'], function(){
     Route::get('', 'FeedbackController@getToken');
     Route::post('', 'FeedbackController@store');
-    Route::get('list', 'FeedbackController@index');
+    Route::get('list', 'FeedbackController@listFeed');
 });

@@ -42,6 +42,14 @@
                                 meus dados
                             </a>
                         </li>
+                        @if( checkGroup("admin") )
+                        <li>
+                            <a ng-href="./#!/feedback">
+                                <span class="glyphicon glyphicon-fire"></span>
+                                Feedbacks
+                            </a>
+                        </li>
+                        @endif
                         <li class="divider"></li>
                         <li>
                             <a ng-href="{{ url('/logout') }}">
