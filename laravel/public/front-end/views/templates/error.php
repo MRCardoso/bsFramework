@@ -1,9 +1,7 @@
-<div ng-if="blockPage.status!=200" class="{{ css_class.save}}">
+<div ng-if="blockPage.status!=200" class="content content-large text-center">
     <div class="alert alert-{{ blockPage.css }} alert-dismissible" role="alert">
-        <strong>{{ blockPage.status }}</strong>
-        {{ blockPage.message}}
+        <h2>{{ blockPage.status }}</h2>
+        <p>{{ blockPage.message}}</p>
     </div>
-    <div class="text-center">
-        <a ng-href role="button" onclick="javascript:window.history.back()" class="btn mrc-btn-light">Voltar</a>
-    </div>
+<!--    <a ng-href role="button" onclick="javascript:window.history.back()" class="btn mrc-btn-light">Voltar</a>-->
 </div>

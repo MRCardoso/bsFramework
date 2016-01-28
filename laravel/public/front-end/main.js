@@ -7,8 +7,9 @@ angular
                     currentPage: 1,
                     moduleName: '',
                     messageDrop: [],
+                    viewCreate: null,
                     authenticate: true,
-                    limit: 7,
+                    limit: 6,
                     datePickerDefault: {
                         language: 'pt-BR',
                         format: "dd/mm/yyyy",
@@ -42,6 +43,8 @@ angular
                     business    = businessRules("json");
 
                 params = angular.extend({}, defaults, params);
+                if( params.viewCreate != null )
+                    $rootScope.viewCreate = params.viewCreate;
                 var datepickerOpt = angular.extend({}, defaults.datePickerDefault, params.datePickerDefault);
                 defaults.authenticate = params.authenticate;
 

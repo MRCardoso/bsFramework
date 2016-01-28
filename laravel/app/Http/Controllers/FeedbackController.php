@@ -7,10 +7,18 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Lang;
 
 class FeedbackController extends Controller
 {
     public function index()
+    {
+        if( checkGroup("admin") )
+            return response()->json(Feedback::all());
+        else
+            return response()->json(Lang::get('app.interface_not_found'), 404);
+    }
+    public function listFeed()
     {
         $comment = Feedback::where(['view_home' => true])->where(['type' => 'comment'])->orderBy('id', 'desc')->get();
         $sujestion = Feedback::where(['view_home' => true])->where(['type' => 'sujestion'])->orderBy('id', 'desc')->get();
