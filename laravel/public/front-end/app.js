@@ -11,6 +11,7 @@ var mainAppModule = angular.module(mainApp,[
     "angularUtils.directives.dirPagination",
     "ngMask",
     "ui.select2",
+    "angular-md5",
     // modules of the application
     "main",
     "home",

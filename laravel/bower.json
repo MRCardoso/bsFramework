@@ -17,7 +17,8 @@
     "eonasdan-bootstrap-datetimepicker": "~4.17.37",
     "ngMask": "angular-mask#~3.0.16",
     "angular-ui-select2": "~0.0.5",
-    "angular-masonry": "~0.14.1"
+    "angular-masonry": "~0.14.1",
+    "angular-md5": "^0.1.10"
   },
   "appPath": "pizza",
   "moduleName": "pizza"

@@ -9,8 +9,12 @@ angular
              | Start Factory that contains all generic methods
              | -----------------------------------------------------------------
              */
+            $scope.dataList = [];
             main.init({moduleName:'feedback', viewCreate:false, limit: 3 });
-
+            $scope.getData = function(item)
+            {
+                $scope.dataList = item;
+            };
             $rootScope.moduleLabel = "Feedback";
             $scope.labelType = { "sujestion": "warning", "comment":"info", "bug": "danger" };
             $scope.labelApp = { "both": "default", "laravel":"danger", "yii": "info" };

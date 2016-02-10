@@ -4,6 +4,10 @@
             <div class="pull-left">
                 <strong>{{ feedback.name }} ({{ feedback.email }})</strong>
                 <p>{{ feedback.message }}</p>
+                <a ng-href role="button" data-toggle="modal" data-target="#data-feed"
+                   ng-click="getData(feedback)">
+                    details
+                </a>
             </div>
             <div class="text-right">
                 <span class="label label-{{ labelApp[feedback.application] }}"
@@ -24,7 +28,24 @@
                     {{ feedback.created_at | myDateFormat:'dd/MM/yyyy HH:mm:ss'}}
                 </span>
             </div>
+            <div class="clear"></div>
         </div>
     </div>
     <div ng-include="'footer.blade.php' | myUrl"></div>
+    <div class="modal fade" id="data-feed" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>
+                        <strong>IP</strong>
+                        {{ dataList.ip_address }}
+                    </p>
+                    <p>
+                        <strong>UserAgent</strong>
+                        {{ dataList.user_agent }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

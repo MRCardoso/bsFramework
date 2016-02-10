@@ -3,6 +3,7 @@
         <thead>
         <tr>
             <th ng-if="auth.group=='admin'">Corporação</th>
+            <th>Gravatar</th>
             <th>nome</th>
             <th>E-mail</th>
             <th>Grupo</th>
@@ -13,7 +14,9 @@
         </thead>
         <tbody>
         <tr dir-paginate="user in users | orderBy: '-id' | filter:filter | itemsPerPage: limit" current-page="currentPage">
+
             <td ng-if="auth.group=='admin'">{{user.corporate_register.name}}</td>
+            <td><img ng-src="http://www.gravatar.com/avatar/{{user.email | gravatar}}?s=25"></td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{groups[user.group].name}}</td>

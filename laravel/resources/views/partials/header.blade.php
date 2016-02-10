@@ -31,6 +31,7 @@
         <script language="Javascript" src="{{ myUrl('/lib/ngMask/dist/ngMask.min.js') }}"></script>
         <script language="Javascript" src="{{ myUrl('/lib/select2/select2.js') }}"></script>
         <script language="Javascript" src="{{ myUrl('/lib/angular-ui-select2/src/select2.js') }}"></script>
+        <script language="Javascript" src="{{ myUrl('/lib/angular-md5/angular-md5.js') }}"></script>
         <!--Scripts to work jquery-->
         <script language="JavaScript" src="{{ myUrl('/js/dialogBox.js') }}"></script>
         <!--main scripts front-end-->
