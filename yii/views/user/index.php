@@ -15,6 +15,12 @@
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => array_merge($columns,[
+            [
+                'format' => 'raw',
+                'value' => function($data){
+                    return \yii\helpers\Html::img('http://www.gravatar.com/avatar/'.md5($data->email).'?s=20');
+                }
+            ],
             'name',
             'email:email',
             'username',
