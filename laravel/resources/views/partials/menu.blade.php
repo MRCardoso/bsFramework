@@ -31,7 +31,7 @@
                 <li>
                     <a data-ng-href role="button" class="dropdown-toggle profile-container" data-toggle="dropdown"
                        role="button" aria-haspopup="true" aria-expanded="false">
-                        {{--<img ng-src="{{showImages(Auth::user->name)}}" class="profile-image">--}}
+                        <img ng-src="http://www.gravatar.com/avatar/{{md5(authData('email'))}}?s=20">
                         {{ Auth::user()->name }}
                         <span class="glyphicon glyphicon-dashboard"></span>
                     </a>

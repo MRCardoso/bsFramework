@@ -78,11 +78,8 @@ angular
                 {
                     if(instanceId != undefined)
                     {
-                        $timeout(function ()
-                        {
-                            $rootScope.totalItems = paginationService.getCollectionLength(instanceId);
-                            $rootScope.loading = false;
-                        }, 800);
+                        $rootScope.totalItems = paginationService.getCollectionLength(instanceId);
+                        $rootScope.loading = false;
                     }
                 };
                 $rootScope.$on('$routeChangeStart', function(scope, next, current){
@@ -92,10 +89,17 @@ angular
                 {
                     $rootScope.loading = false;
                 });
-                $rootScope.listen();
+
                 $rootScope.changePage = function(p) {
                     $rootScope.currentPage = p;
                 };
+                $(document).ready(function()
+                {
+                    $timeout(function () {
+                        $rootScope.listen();
+                    }, 600);
+
+                });
                 $rootScope.changeClass = function(id) {
                     $(".menu-action li").removeClass('active');
                     $("#"+id).addClass('active');

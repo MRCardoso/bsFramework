@@ -19,9 +19,11 @@
         {
             if( $onlyAuthData )
             {
+
                 return [
                     [
-                        'label' => Yii::$app->user->identity->username,
+                        'label' => \yii\helpers\Html::img('http://www.gravatar.com/avatar/'.md5(authData("email")).'?s=20')."\n".
+                                    Yii::$app->user->identity->username,
                         'items' => [
                             [
                                 'label' => '<span class="glyphicon glyphicon-education"></span> '.t('my data'),

@@ -14,7 +14,7 @@ class FeedbackController extends Controller
     public function index()
     {
         if( checkGroup("admin") )
-            return response()->json(Feedback::all());
+            return response()->json(Feedback::all()->withHidden('user_agent','ip_address'));
         else
             return response()->json(Lang::get('app.interface_not_found'), 404);
     }

@@ -9,7 +9,7 @@ angular
              | Start Factory that contains all generic methods
              | -----------------------------------------------------------------
              */
-            main.init({moduleName:'feedback', viewCreate:false, limit:5 });
+            main.init({moduleName:'feedback', viewCreate:false, limit: 3 });
 
             $rootScope.moduleLabel = "Feedback";
             $scope.labelType = { "sujestion": "warning", "comment":"info", "bug": "danger" };
