@@ -141,6 +141,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        KennedyTedesco\Validation\ValidationServiceProvider::class,
 
         /*
          * Application Service Providers...

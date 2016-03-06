@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Validator::extend('with_mask', 'App\\Validators\\Validator@validate');
-        Validator::extend('uniqueUser', 'App\\Validators\\Validator@uniqueUser');
+        Validator::extend('uniqueField', 'App\\Validators\\Validator@uniqueField');
         Validator::extend('validGroup', 'App\\Validators\\Validator@validGroup');
         Validator::extend('dateValid', 'App\\Validators\\Validator@dateValid');
         Validator::replacer('with_mask', 'App\\Validators\\Validator@replace');

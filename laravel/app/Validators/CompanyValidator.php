@@ -14,7 +14,7 @@ class CompanyValidator extends LaravelValidator
         "corporate_register_id"     => "required|integer",
         "user_id"                   => "required|integer",
         "name"                      => "required|max:90",
-        "cnpj"                      => "required|with_mask:14",
+        "cnpj"                      => "required|with_mask:14|cnpj|uniqueField:company",
         "address"                   => "max:120",
         "phone"                     => "with_mask:11",
         "email"                     => "max:90|email",

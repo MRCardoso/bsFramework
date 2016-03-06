@@ -2,7 +2,9 @@
 
 namespace App\Validators;
 
+use App\Entities\Deliveryman;
 use App\Entities\User;
+use App\Entities\Company;
 use App\Http\Requests\Request;
 use App\Services\UserService;
 use Carbon\Carbon;
@@ -27,14 +29,26 @@ class Validator extends LaravelValidator
         return str_replace(':parameter', $parameters[0], $message);
     }
 
-    public function uniqueUser($attribute, $value, $parameters)
+    public function uniqueField($attribute, $value, $parameters)
     {
-        $user = User::where($attribute, $value);
+        $model = NULL;
+        $regex = "(\)|\(| |\/|\.|-)";
 
-        if( Input::get('id') != null )
-            $user = $user->where('id', '<>', intval(Input::get('id')));
+        if ( !isset($parameters[0]) )
+            $model = User::where($attribute, $value);
+        elseif ( isset($parameters[0]) && $parameters[0] == "company" )
+            $model = Company::where($attribute, preg_replace($regex,"",$value));
+        elseif ( isset($parameters[0]) && $parameters[0] == "deliveryman" )
+            $model = Deliveryman::where($attribute, preg_replace($regex,"",$value));
+        
+        if( $model != NULL )
+        {
+            if( Input::get('id') != null )
+                $model = $model->where('id', '<>', intval(Input::get('id')));
 
-        return count($user->get()) == 0;
+            return count($model->get()) == 0;
+        }
+        return false;
     }
     public function validGroup($attribute, $value, $parameters)
     {

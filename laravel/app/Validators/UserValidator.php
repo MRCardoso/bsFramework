@@ -16,11 +16,11 @@ class UserValidator extends LaravelValidator
 {
     protected $rules = [
         'corporate_register_id' => 'required',
-        'username' => 'required|uniqueUser',
+        'username' => 'required|uniqueField',
         'name' => 'required|max:255',
         'group' => 'required|validGroup',
         'password' => 'required|confirmed|min:6',
-        'email' => 'required|email|max:255|uniqueUser',
+        'email' => 'required|email|max:255|uniqueField',
     ];
     public function prepareRules( $update = false)
     {

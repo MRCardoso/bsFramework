@@ -91,18 +91,22 @@ return [
     'custom' => [
         'cnpj' => [
             'with_mask' => 'O :attribute deve ter exatamente :parameter digitos',
+            'unique_field' => 'O valor indicado para o campo :attribute já se encontra utilizado.',
+            'cnpj' => 'O cnpj informado não é valido.'
         ],
         'phone' => [
             'with_mask' => 'O :attribute deve ter até :parameter digitos',
         ],
         'cpf' => [
             'with_mask' => 'O :attribute deve ter exatamente :parameter digitos',
+            'unique_field' => 'O valor indicado para o campo :attribute já se encontra utilizado.',
+            'cpf' => 'O cpf informado não é valido.'
         ],
         'email' => [
-            'unique_user' => 'O valor indicado para o campo :attribute já se encontra utilizado.'
+            'unique_field' => 'O valor indicado para o campo :attribute já se encontra utilizado.'
         ],
         'username' => [
-            'unique_user' => 'O valor indicado para o campo :attribute já se encontra utilizado.'
+            'unique_field' => 'O valor indicado para o campo :attribute já se encontra utilizado.'
         ],
         'group' => [
             'valid_group' => "O grupo não foi encontrado!"

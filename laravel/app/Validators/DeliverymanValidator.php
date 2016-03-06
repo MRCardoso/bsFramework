@@ -17,7 +17,7 @@ class DeliverymanValidator extends LaravelValidator
         "user_id"                       => "required|integer",
         "company_id"                    => "required|integer",
         "name"                          => "required|max:255",
-        "cpf"                           => "required|with_mask:11",
+        "cpf"                           => "cpf|uniqueField:deliveryman|required|with_mask:11",
         "rg"                            => "max:18",
         "cellphone"                     => "with_mask:11",
     ];
