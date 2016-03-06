@@ -147,10 +147,11 @@ mainAppModule.config(["$locationProvider","toastrConfig", function($locationProv
             }
         };
     })
-    .run(["$http", "$rootScope", function ($http,$rootScope) {
+    .run(["$http", "$rootScope", "$resource", function ($http,$rootScope, $resource) {
         $rootScope.modules = modules;
         $rootScope.auth = user;
         $rootScope.labels = labels;
+        $rootScope.dataModule = $resource('/script/data.json').query();
         user = {};
         modules = {};
         labels = {};

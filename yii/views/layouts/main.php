@@ -114,33 +114,6 @@ $this->params['breadcrumbs'] = makeBreadcrumb(Yii::$app->request->pathInfo);
         ?>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <div class="pull-left">
-            <a href="/" style="text-decoration: none">
-            <?php
-            echo Html::img('@web/web/images/logomarca-mrc4.png', [
-                'alt'=>Yii::$app->name,
-                'class'=> 'image-logo',
-                'title'=>'Volte a raiz do sistema',
-                'data-toggle'=>'tooltip'
-            ]);?>
-            </a>
-            <a href="/laravel/" style="text-decoration: none">
-                <?php echo Html::img('@web/web/images/Laravel_logo.jpg', [
-                    'alt'=>Yii::$app->name,
-                    'class'=> 'image-logo',
-                    'title'=>'acesso este sistema pelo Laravel',
-                    'data-toggle'=>'tooltip'
-                ]); ?>
-            </a>
-        </div>
-        <div class="text-center">
-            <?php echo  "<strong>&copy; MRC - ".date('Y')." @developed with Yii Framework on your version ".Yii::getVersion()."</strong>"; ?>
-        </div>
-    </div>
-</footer>
 <?php $this->endBody() ?>
 </body>
 </html>

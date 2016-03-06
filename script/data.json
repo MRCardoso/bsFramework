@@ -1,0 +1,27 @@
+[
+  {
+    "module": "client",
+    "name": "cliente",
+    "text": "Cadastre e gerencie seus clientes"
+  },
+  {
+    "module": "company",
+    "name": "Empresa",
+    "text": "Cadastre e gerencie empresas tercerizadas"
+  },
+  {
+    "module": "deliveryman",
+    "name": "Entregador",
+    "text": "Cadastre e gerencie entregadores da empresa tercerizada"
+  },
+  {
+    "module": "product",
+    "name": "Produto",
+    "text": "Cadastro e controle de seus produtos"
+  },
+  {
+    "module": "request",
+    "name": "Pedido",
+    "text": "Gerenciamento e controle de lista de pedidos e processo"
+  }
+]

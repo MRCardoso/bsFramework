@@ -119,11 +119,8 @@
     border-color: #486B4D;
 }
 .box{
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
+    width: 80px;
+    height: 80px;
     -webkit-box-shadow: inset 0 0 200px #333333;
     -moz-box-shadow: inset 0 0 200px #333333;
     box-shadow: inset 0 0 200px #333333;
@@ -146,24 +143,24 @@
     -kthtml-transition: all 1s linear;
     transition: all 1s linear;
 }
-.image-git{
-    background: #E9EdE9 url('/images/github.png') no-repeat center;
+.image-client{
+    background: #E9EdE9 url('/images/clientes.png') no-repeat center;
     background-size: 80%;
 }
-.image-composer{
-    background: #E9EdE9 url('/images/composer.png') no-repeat center;
+.image-company{
+    background: #E9EdE9 url('/images/empresa.png') no-repeat center;
     background-size: 80%;
 }
-.image-bootstrap{
-    background: #E9EdE9 url('/images/bootstrap.png') no-repeat center;
+.image-deliveryman{
+    background: #E9EdE9 url('/images/entregador.png') no-repeat center;
     background-size: 80%;
 }
-.image-angular{
-    background: #E9EdE9 url('/images/angularjs.png') no-repeat center;
+.image-product{
+    background: #E9EdE9 url('/images/produto.png') no-repeat center;
     background-size: 80%;
 }
-.image-yii{
-    background: #E9EdE9 url('/images/yii.png') no-repeat center;
+.image-request{
+    background: #E9EdE9 url('/images/pedido.png') no-repeat center;
     background-size: 80%;
 }
 .image-mrc{
@@ -171,12 +168,13 @@
     border-radius: 5px;
 }
 .list-libraries{
-    margin: 0;
+    margin: 0.5%;
     padding: 0;
     list-style: none;
 }
 .list-libraries li{
     display: inline-block;
+    border: 1px solid #333333;
     margin-right: 0.6%;
 }
 .select2{
@@ -189,6 +187,13 @@
 .remove-link{
     text-decoration: none;
 }
+.image-home{
+    height: 380px;
+    background: url('/images/mbo-ground.jpg');
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
 @media screen and (max-width: 650px)
 {
     .box{
