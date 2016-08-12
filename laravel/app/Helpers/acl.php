@@ -90,7 +90,7 @@
 
             \Illuminate\Support\Facades\Mail::send("emails.{$layout}", $params, function ($m) use($mail, $subject,$admin)
             {
-                $m->from($admin);
+                $m->from($admin, $admin);
 
                 $m->to($mail);
 
