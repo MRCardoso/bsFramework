@@ -106,7 +106,7 @@
             $params = ['title' => $subject, 'content' => $message, 'dump' => $dump ];
 
             $mailer = \Yii::$app->mailer->compose("layouts/{$layout}", $params)
-                    ->setFrom([\Yii::$app->params['adminEmail'] => '[Administrativo] - bsFrameworks'])
+                    ->setFrom(\Yii::$app->params['adminEmail'])
                     ->setTo($mail);
 
             if( $mail != \Yii::$app->params['adminEmail'] )
