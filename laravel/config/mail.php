@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => env('MAIL_EMAIL'), 'name' => '[Administrativo] - bsFrameworks'],
+    'from' => ['address' => env('MAIL_EMAIL')],
 
     /*
     |--------------------------------------------------------------------------

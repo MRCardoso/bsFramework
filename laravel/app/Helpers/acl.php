@@ -90,7 +90,7 @@
 
             \Illuminate\Support\Facades\Mail::send("emails.{$layout}", $params, function ($m) use($mail, $subject,$admin)
             {
-                $m->from($admin, '[Administrativo] - bsFrameworks');
+                $m->from($admin);
 
                 $m->to($mail);
 
